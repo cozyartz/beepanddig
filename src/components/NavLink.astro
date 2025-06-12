@@ -6,7 +6,7 @@ import type { HTMLAttributes } from 'astro/types';
 
 type Props = HTMLAttributes<'a'>;
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className = '', ...props } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 const baseSegment = pathname.split('/').filter(Boolean)?.[0] || '';
 const isActive = href === pathname || href === '/' + baseSegment;
@@ -14,16 +14,16 @@ const isActive = href === pathname || href === '/' + baseSegment;
 
 <motion.a
   href={href}
-  class={className}
-  class:list={[{ active: isActive }]}
-  whileHover={{ scale: 1.15, rotate: 3, color: 'var(--accent-hover)' }}
+  class={`relative inline-flex items-center gap-2 px-3 py-1 rounded-xl font-medium transition-colors ${className}`}
+  class:list={[{ 'text-accent font-semibold': isActive }]}
+  whileHover={{ scale: 1.1, rotate: 1 }}
   whileTap={{ scale: 0.95 }}
-  transition={{ duration: 0.3, ease: 'easeOut' }}
+  transition={{ duration: 0.25, ease: 'easeOut' }}
   aria-current={isActive ? 'page' : undefined}
   {...props}
 >
-  <span class="flex items-center gap-2">
-    {isActive && <FontAwesomeIcon icon={faMapPin} class="text-accent animate-pulse" size="lg" />}
-    <slot />
-  </span>
+  {isActive && (
+    <FontAwesomeIcon icon={faMapPin} class="text-accent animate-pulse" size="lg" />
+  )}
+  <slot />
 </motion.a>

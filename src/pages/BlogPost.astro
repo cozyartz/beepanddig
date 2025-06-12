@@ -2,34 +2,29 @@
 import type { CollectionEntry } from 'astro:content';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTreasureChest, faCalendarAlt } from '@fortawesome/pro-solid-svg-icons';
-import BlogPost from '../../layouts/BlogPost.astro';
-import { render } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import { faTreasureChest } from '@fortawesome/pro-solid-svg-icons';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
+const { IMAGE_DELIVERY_URL } = import.meta.env;
 
-export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: { slug: post.id.replace(/\.mdx$/, '') },
-    props: post,
-  }));
-}
+type Props = CollectionEntry<'blog'>['data'];
 
-type Props = CollectionEntry<'blog'>;
-
-const post = Astro.props;
-const { Content } = await render(post);
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 // React Component: Animated Hero Image
 const AnimatedHero = ({ src, alt }) => (
   <motion.div
-    initial={{ opacity: 0, scale: 0.8 }}
+    initial={{ opacity: 0, scale: 0.85 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 1.2, ease: 'easeOut' }}
     className="hero-image"
+    whileHover={{ scale: 1.02, rotate: 1 }}
   >
     {src ? (
-      <img src={src} alt={alt} className="w-full h-auto rounded-2xl shadow-xl" />
+      <img src={`${IMAGE_DELIVERY_URL}${src}/default`} alt={alt} className="w-full h-auto rounded-2xl shadow-xl" />
     ) : (
       <FontAwesomeIcon icon={faTreasureChest} size="4x" className="text-accent mx-auto animate-pulse" />
     )}
@@ -39,7 +34,7 @@ const AnimatedHero = ({ src, alt }) => (
 
 <html lang="en">
   <head>
-    <BaseHead title={post.data.title} description={post.data.description} />
+    <BaseHead title={title} description={description} />
     <style>
       @import url('/styles/global.css');
     </style>
@@ -47,12 +42,16 @@ const AnimatedHero = ({ src, alt }) => (
   <body>
     <Header />
     <main class="max-w-6xl mx-auto px-6">
-      <article>
+      <motion.article
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, ease: 'easeInOut' }}
+      >
         <div class="hero-image">
-          {post.data.heroImage && (
+          {heroImage && (
             <AnimatedHero
-              src={post.data.heroImage.src}
-              alt={`Hero image for ${post.data.title}`}
+              src={heroImage.src}
+              alt={`Hero image for ${title}`}
               client:load
             />
           )}
@@ -65,20 +64,19 @@ const AnimatedHero = ({ src, alt }) => (
         >
           <div class="title">
             <div className="date text-gray-dark flex items-center gap-3">
-              <FontAwesomeIcon icon={faCalendarAlt} size="lg" className="text-accent" />
-              <FormattedDate date={post.data.pubDate} />
-              {post.data.updatedDate && (
+              <FormattedDate date={pubDate} />
+              {updatedDate && (
                 <div className="last-updated-on italic">
-                  Last updated on <FormattedDate date={post.data.updatedDate} />
+                  Last updated on <FormattedDate date={updatedDate} />
                 </div>
               )}
             </div>
-            <h1 className="text-5xl text-heading font-extrabold mt-4">{post.data.title}</h1>
+            <h1 className="text-5xl text-heading font-extrabold mt-4">{title}</h1>
             <hr className="border-gray-light my-6" />
           </div>
-          <Content />
+          <slot />
         </motion.div>
-      </article>
+      </motion.article>
     </main>
     <Footer />
   </body>

@@ -6,13 +6,33 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
+    "@astrojs/react": "^4.3.0",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.4.1",
-    "astro": "^5.9.0",
-    "sharp": "^0.34.2"
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@fortawesome/pro-regular-svg-icons": "^6.7.2",
+    "@fortawesome/pro-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "astro": "^5.9.1",
+    "framer-motion": "^12.16.0",
+    "motion": "^12.16.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "sharp": "^0.34.2",
+    "swiper": "^11.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.8",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.4",
+    "postcss-import": "^16.1.0",
+    "tailwindcss": "^4.1.8"
   }
 }

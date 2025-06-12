@@ -1,49 +1,189 @@
 ---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import ThemeToggle from '../components/ThemeToggle.jsx';
+import { faShovel, faGem, faTreasureChest, faShoppingCart } from '@fortawesome/pro-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from 'framer-motion';
+import 'swiper/css';
+
+const { IMAGE_DELIVERY_URL } = import.meta.env;
+
+const rocks = [
+  {
+    name: 'Petoskey Stone',
+    description: 'Fossilized coral found on Michigan beaches, prized for its hexagonal pattern.',
+    image: `${IMAGE_DELIVERY_URL}petoskey-stone-id/default`,
+  },
+  {
+    name: 'Lake Superior Agate',
+    description: 'Colorful, translucent stones from Lake Superior shores, a rockhound’s treasure.',
+    image: `${IMAGE_DELIVERY_URL}agate-id/default`,
+  },
+  {
+    name: 'Native Copper Nugget',
+    description: 'Pure copper nuggets from Michigan’s Upper Peninsula, often found while detecting.',
+    image: `${IMAGE_DELIVERY_URL}copper-nugget-id/default`,
+  },
+];
+
+const products = [
+  { name: 'Garrett AT Pro Metal Detector', link: '/affiliate/garrett-at-pro', image: `${IMAGE_DELIVERY_URL}detector-id/default` },
+  { name: 'Nokta Pinpointer', link: '/affiliate/nokta-pinpointer', image: `${IMAGE_DELIVERY_URL}pinpointer-id/default` },
+  { name: 'Digging Trowel', link: '/affiliate/digging-trowel', image: `${IMAGE_DELIVERY_URL}trowel-id/default` },
+];
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body class="bg-background text-foreground font-sans antialiased">
+    <Header />
+    <main class="max-w-6xl mx-auto px-6">
+      <ThemeToggle client:load />
+
+      <!-- 🌟 Hero Section -->
+      <motion.section
+        class="py-24 text-center bg-gradient-to-b from-accent/30 via-transparent to-accent/10 rounded-2xl shadow-2xl"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: 'easeOut' }}
+        client:load
+      >
+        <motion.div
+          class="inline-block mb-8"
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
+        >
+          <FontAwesomeIcon icon={faShovel} size="4x" class="text-accent glow" />
+        </motion.div>
+        <h1 class="text-6xl font-extrabold text-heading uppercase tracking-wider drop-shadow-lg">Beep & Dig</h1>
+        <p class="text-2xl text-gray-dark mt-6 font-light leading-relaxed max-w-2xl mx-auto">
+          Unearth treasures with the best metal detecting gear and tips
+        </p>
+        <motion.a
+          href="/gear"
+          class="mt-10 inline-block bg-accent text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-3xl transition-all duration-300"
+          whileHover={{ scale: 1.1, rotate: 2 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Shop Gear
+        </motion.a>
+      </motion.section>
+
+      <!-- 🪨 Michigan Rocks -->
+      <section class="py-20" client:load>
+        <h2 class="text-4xl font-semibold text-heading text-center mb-10 flex items-center justify-center gap-4">
+          <FontAwesomeIcon icon={faGem} size="2x" class="text-accent animate-pulse-slow" />
+          Michigan’s Rock Treasures
+        </h2>
+        <Swiper
+          spaceBetween={40}
+          slidesPerView={1}
+          breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
+          class="px-6"
+        >
+          {rocks.map((rock, index) => (
+            <SwiperSlide key={index}>
+              <motion.div
+                class="bg-gray-dark rounded-2xl p-6 shadow-lg relative overflow-hidden"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.3, ease: 'easeOut' }}
+                whileHover={{ scale: 1.08, rotate: 2 }}
+                drag="x"
+                dragConstraints={{ left: -120, right: 120 }}
+              >
+                <img src={rock.image} alt={rock.name} class="w-full h-56 object-cover rounded-xl" />
+                <h3 class="text-2xl text-accent mt-6 flex items-center gap-3 font-medium">
+                  <FontAwesomeIcon icon={faGem} size="lg" />
+                  {rock.name}
+                </h3>
+                <motion.div
+                  class="absolute inset-0 bg-accent/80 p-6 text-white flex items-center justify-center opacity-0 rounded-2xl backdrop-blur"
+                  whileHover={{ opacity: 0.95 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                >
+                  <p class="text-lg text-center">{rock.description}</p>
+                </motion.div>
+              </motion.div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+
+      <!-- ⚙️ Product Carousel -->
+      <section class="py-20" client:load>
+        <h2 class="text-4xl font-semibold text-heading text-center mb-10 flex items-center justify-center gap-4">
+          <FontAwesomeIcon icon={faTreasureChest} size="2x" class="text-accent animate-bounce" />
+          Top Metal Detecting Gear
+        </h2>
+        <Swiper
+          spaceBetween={40}
+          slidesPerView={1}
+          breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
+          class="px-6"
+        >
+          {products.map((product, index) => (
+            <SwiperSlide key={index}>
+              <motion.div
+                class="bg-gray-dark rounded-2xl p-6 shadow-lg relative overflow-hidden"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.3, ease: 'easeOut' }}
+                whileHover={{ scale: 1.08, rotate: 2 }}
+              >
+                <img src={product.image} alt={product.name} class="w-full h-56 object-cover rounded-xl" />
+                <h3 class="text-2xl text-accent mt-6 flex items-center gap-3 font-medium">
+                  <FontAwesomeIcon icon={faTreasureChest} size="lg" />
+                  {product.name}
+                </h3>
+                <motion.a
+                  href={product.link}
+                  class="text-heading underline hover:text-accent-hover flex items-center gap-3 mt-4 font-semibold"
+                  whileHover={{ scale: 1.1, rotate: 2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+                  Buy Now
+                </motion.a>
+              </motion.div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+
+      <!-- 🗺️ CTA Section -->
+      <motion.section
+        class="py-20 text-center bg-[url('/images/parchment-bg.jpg')] bg-cover bg-center rounded-xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, delay: 0.6, ease: 'easeInOut' }}
+        client:load
+      >
+        <h2 class="text-4xl font-semibold text-heading flex items-center justify-center gap-4">
+          <FontAwesomeIcon icon={faTreasureChest} size="2x" class="text-accent animate-pulse" />
+          Hunt for Hidden Treasures
+        </h2>
+        <p class="text-2xl text-gray-dark mt-6 font-light max-w-xl mx-auto">
+          Explore tips, stories, and gear to uncover Michigan’s lost relics.
+        </p>
+        <motion.a
+          href="/blog"
+          class="mt-10 inline-block bg-accent text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-3xl transition-all duration-300"
+          whileHover={{ scale: 1.1, rotate: 2 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Start Digging
+        </motion.a>
+      </motion.section>
+    </main>
+    <Footer />
+  </body>
 </html>

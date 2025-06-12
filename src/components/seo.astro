@@ -1,0 +1,49 @@
+---
+import { ImageMetadata } from 'astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: ImageMetadata;
+  canonicalUrl?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION, image, canonicalUrl } = Astro.props;
+const siteUrl = Astro.site || new URL('http://localhost:4321', import.meta.env.SITE);
+const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl);
+const imageUrl = image ? new URL(image.src, siteUrl) : new URL('/assets/treasure-hunt-placeholder.jpg', siteUrl);
+---
+
+<!-- Primary Meta Tags -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content="metal detecting, treasure hunting, Michigan, Petoskey stones, Lake Superior agates, copper nuggets, Diggity Dog" />
+<meta name="author" content="Diggity Dog" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:alt" content="Beep & Dig treasure hunting adventure" />
+<meta property="og:site_name" content={SITE_TITLE} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonical} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={imageUrl} />
+<meta property="twitter:image:alt" content="Beep & Dig treasure hunting adventure" />
+
+<!-- Favicon and Additional Links -->
+<link rel="icon" type="image/svg+xml" href={`${siteUrl}/favicon.svg`} />
+<link rel="sitemap" href={`${siteUrl}/sitemap-index.xml`} />
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={`${siteUrl}/rss.xml`} />

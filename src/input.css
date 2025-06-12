@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────
+   Base Layer
+   ───────────────────── */
+@layer base {
+  @font-face {
+    font-family: 'Atkinson';
+    src: url('/fonts/atkinson-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Atkinson';
+    src: url('/fonts/atkinson-bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  html {
+    font-family: 'Atkinson', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-gradient-to-b from-[var(--gradient-start)] to-[var(--gradient-end)] text-[var(--text)];
+    background-size: 100% 1000px;
+    transition: background 0.6s ease, color 0.4s ease;
+    font-size: 1.25rem;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-[var(--heading)] leading-tight;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    margin-bottom: 1.25rem;
+  }
+
+  a {
+    color: var(--accent);
+    transition: all 0.3s ease-in-out;
+  }
+
+  a:hover {
+    color: var(--accent-hover);
+    transform: scale(1.05);
+  }
+}
+
+/* ─────────────────────
+   Components Layer
+   ───────────────────── */
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-xl bg-[var(--accent)] text-white shadow-md transition-all duration-300 ease-in-out;
+  }
+
+  .btn:hover {
+    @apply shadow-xl scale-105;
+  }
+
+  .hero-image {
+    @apply rounded-2xl overflow-hidden shadow-xl;
+  }
+
+  .prose p {
+    @apply mb-6 text-lg;
+  }
+
+  .card {
+    @apply bg-[var(--gray-dark)] p-6 rounded-2xl shadow-lg;
+  }
+}
+
+/* ─────────────────────
+   Utilities Layer
+   ───────────────────── */
+@layer utilities {
+  .text-heading {
+    @apply text-3xl md:text-4xl font-bold text-[var(--heading)];
+  }
+
+  .shadow-box {
+    @apply shadow-lg hover:shadow-2xl transition-shadow duration-300;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  .glow {
+    text-shadow: 0 0 10px rgba(165, 94, 63, 0.7), 0 0 20px rgba(165, 94, 63, 0.5);
+    animation: glow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px rgba(165, 94, 63, 0.6), 0 0 10px rgba(165, 94, 63, 0.4);
+    }
+    to {
+      text-shadow: 0 0 15px rgba(165, 94, 63, 0.8), 0 0 30px rgba(165, 94, 63, 0.6);
+    }
+  }
+}
