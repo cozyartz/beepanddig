@@ -1,16 +1,23 @@
 // tailwind.config.js
 export default {
-  content: ['./src/**/*.{astro,js,jsx,ts,tsx}'],
+  content: ['./src/**/*.{astro,js,jsx,ts,tsx,mdx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Atkinson', 'system-ui', 'sans-serif'],
+      },
       colors: {
         background: 'var(--background)',
         text: 'var(--text)',
         heading: 'var(--heading)',
-        accent: 'var(--accent)',
-        'accent-hover': 'var(--accent-hover)',
-        'gray-light': 'var(--gray-light)',
-        'gray-dark': 'var(--gray-dark)',
+        accent: {
+          DEFAULT: 'var(--accent)',
+          hover: 'var(--accent-hover)',
+        },
+        gray: {
+          light: 'var(--gray-light)',
+          dark: 'var(--gray-dark)',
+        },
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -44,4 +51,5 @@ export default {
       },
     },
   },
+  plugins: [],
 };

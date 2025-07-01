@@ -1,4 +1,7 @@
 @import '@fortawesome/fontawesome-free/css/all.min.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Custom Fonts */
 @font-face {
@@ -43,49 +46,100 @@
   --box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
-/* Base Styles */
-body {
-  font-family: 'Atkinson', system-ui, sans-serif;
-  background: linear-gradient(var(--gradient-start), var(--gradient-end));
-  background-size: 100% 1000px;
-  color: var(--text);
-  font-size: 20px;
-  line-height: 1.7;
-  transition: background 0.6s ease, color 0.4s ease;
-  margin: 0;
-  padding: 0;
+@layer base {
+  html {
+    font-family: 'Atkinson', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-text;
+    background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+    background-size: 100% 1000px;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    transition: background 0.6s ease, color 0.4s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-heading;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+    transition: color 0.4s ease;
+  }
+
+  h1 { font-size: 3.75rem; }
+  h2 { font-size: 3rem; }
+  h3 { font-size: 2.25rem; }
+  h4 { font-size: 1.875rem; }
+  h5 { font-size: 1.5rem; }
+
+  p {
+    margin-bottom: 1.25rem;
+  }
+
+  a {
+    color: var(--accent);
+    transition: all 0.3s ease-in-out;
+  }
+
+  a:hover {
+    color: var(--accent-hover);
+    transform: scale(1.05);
+  }
 }
 
-/* Remove main styles to let Tailwind handle layout */
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-xl bg-accent text-white shadow-md transition-all duration-300 ease-in-out;
+  }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 0.75rem 0;
-  font-weight: bold;
-  color: var(--heading);
-  line-height: 1.2;
-  transition: color 0.4s ease;
+  .btn:hover {
+    @apply shadow-xl scale-105;
+  }
+
+  .hero-image {
+    @apply rounded-2xl overflow-hidden shadow-xl;
+  }
+
+  .prose p {
+    @apply mb-6 text-lg;
+  }
+
+  .card {
+    @apply bg-gray-dark p-6 rounded-2xl shadow-lg;
+  }
 }
 
-h1 { font-size: 3.75rem; }
-h2 { font-size: 3rem; }
-h3 { font-size: 2.25rem; }
-h4 { font-size: 1.875rem; }
-h5 { font-size: 1.5rem; }
+@layer utilities {
+  .text-heading {
+    @apply text-3xl md:text-4xl font-bold;
+    color: var(--heading);
+  }
 
-a {
-  color: var(--accent);
-  transition: all 0.3s ease-in-out;
-}
-a:hover {
-  color: var(--accent-hover);
-  transform: scale(1.05);
+  .shadow-box {
+    @apply shadow-lg hover:shadow-2xl transition-shadow duration-300;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  .glow {
+    text-shadow: 0 0 10px rgba(165, 94, 63, 0.7), 0 0 20px rgba(165, 94, 63, 0.5);
+    animation: glow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px rgba(165, 94, 63, 0.6), 0 0 10px rgba(165, 94, 63, 0.4);
+    }
+    to {
+      text-shadow: 0 0 15px rgba(165, 94, 63, 0.8), 0 0 30px rgba(165, 94, 63, 0.6);
+    }
+  }
 }
 
-p {
-  margin-bottom: 1.25rem;
-}
-
+/* Additional styles for better layout */
 textarea, input {
   width: 100%;
   padding: 0.75rem;
@@ -94,21 +148,6 @@ textarea, input {
   border: 1px solid var(--gray-light);
   background: var(--background);
   transition: all 0.3s ease;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: var(--box-shadow);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.75rem;
-  transition: transform 0.4s ease-in-out;
 }
 
 code {
@@ -126,6 +165,7 @@ pre {
   color: var(--gray-light);
   box-shadow: var(--box-shadow);
 }
+
 pre > code {
   all: unset;
 }
@@ -137,20 +177,6 @@ blockquote {
   font-style: italic;
   background: rgba(221, 226, 229, 0.1);
   border-radius: 0.75rem;
-}
-
-hr {
-  border: 0;
-  border-top: 2px solid var(--gray-light);
-  margin: 1.5rem 0;
-}
-
-svg {
-  transition: all 0.3s ease;
-}
-svg:hover {
-  color: var(--accent-hover);
-  transform: scale(1.1);
 }
 
 .sr-only {
@@ -167,15 +193,13 @@ svg:hover {
 }
 
 @media (max-width: 640px) {
-  body { font-size: 1.125rem; }
-  main { padding: 1.5rem; }
+  body { 
+    font-size: 1.125rem; 
+  }
+  
   h1 { font-size: 3rem; }
   h2 { font-size: 2.5rem; }
   h3 { font-size: 2rem; }
   h4 { font-size: 1.5rem; }
   h5 { font-size: 1.25rem; }
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

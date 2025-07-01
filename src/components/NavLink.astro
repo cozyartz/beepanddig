@@ -11,7 +11,7 @@ const isActive = href === pathname || href === '/' + baseSegment;
 
 <a
   href={href}
-  class={`relative px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-accent/10 hover:text-accent-hover ${isActive ? 'text-accent bg-accent/10 font-semibold' : 'text-text hover:text-accent'} ${className}`}
+  class={`relative px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-accent/10 hover:text-accent ${isActive ? 'text-accent bg-accent/10 font-semibold' : 'text-text hover:text-accent'} ${className}`}
   aria-current={isActive ? 'page' : undefined}
 >
   {isActive && <span class="absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full animate-pulse"></span>}
