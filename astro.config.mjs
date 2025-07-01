@@ -3,14 +3,16 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'http://localhost:4321',
+  site: 'https://beepanddig.com',
   trailingSlash: 'never',
   integrations: [
     mdx(),
     sitemap(),
     react(),
+    tailwind(), // <-- Use the official Astro Tailwind integration
   ],
   vite: {
     optimizeDeps: {

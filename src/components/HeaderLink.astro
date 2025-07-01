@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin } from '@fortawesome/pro-solid-svg-icons';
 import type { HTMLAttributes } from 'astro/types';
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<'a'> & { href: string };
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className = '' } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 const baseSegment = pathname.split('/').filter(Boolean)?.[0] || '';
 const isActive = href === pathname || href === '/' + baseSegment;
@@ -14,16 +14,15 @@ const isActive = href === pathname || href === '/' + baseSegment;
 
 <motion.a
   href={href}
-  class={className}
+  className={className || undefined}
   class:list={[{ active: isActive }]}
   whileHover={{ scale: 1.15, rotate: 3, color: 'var(--accent-hover)' }}
   whileTap={{ scale: 0.95 }}
   transition={{ duration: 0.3, ease: 'easeOut' }}
   aria-current={isActive ? 'page' : undefined}
-  {...props}
 >
   <span class="flex items-center gap-2">
-    {isActive && <FontAwesomeIcon icon={faMapPin} class="text-accent animate-pulse" size="lg" />}
+    {isActive && <FontAwesomeIcon icon={faMapPin} className="text-accent animate-pulse" size="lg" />}
     <slot />
   </span>
 </motion.a>

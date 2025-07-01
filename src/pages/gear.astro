@@ -1,0 +1,244 @@
+---
+// src/pages/gear.astro
+import BaseHead from '../components/BaseHead.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } from '@fortawesome/pro-solid-svg-icons';
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <BaseHead 
+      title="Metal Detecting Gear & Equipment - Beep & Dig" 
+      description="Discover the best metal detecting gear, tools, and accessories recommended by Diggity Dog. From beginner-friendly detectors to pro-level equipment." 
+    />
+  </Fragment>
+  
+  <div class="max-w-6xl mx-auto -mt-10 pt-10 pb-6">
+      <!-- Hero Section -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-heading mb-4">
+          <FontAwesomeIcon icon={faTools} className="text-accent mr-3" />
+          Essential Gear for Every Hunter
+        </h1>
+        <p class="text-xl text-gray-dark max-w-3xl mx-auto mb-8">
+          After years of hunting across Michigan's diverse terrain, I've tested countless detectors, tools, and accessories. 
+          Here's my curated list of gear that actually delivers results in the field.
+        </p>
+        <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-6 max-w-2xl mx-auto">
+          <p class="text-yellow-800 text-sm">
+            <strong>Transparency Note:</strong> Some links below are affiliate links. If you purchase through them, 
+            I earn a small commission at no extra cost to you. This helps keep Beep & Dig running!
+          </p>
+        </div>
+      </div>
+
+      <!-- Metal Detectors Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-heading mb-8 flex items-center gap-2">
+          <FontAwesomeIcon icon={faTreasureChest} className="text-accent" />
+          Metal Detectors
+        </h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Beginner Detector -->
+          <div class="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-shadow">
+            <div class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full inline-block mb-4">
+              BEST FOR BEGINNERS
+            </div>
+            <h3 class="text-xl font-bold text-heading mb-2">Garrett ACE 300</h3>
+            <div class="flex items-center gap-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <FontAwesomeIcon 
+                  key={i}
+                  icon={faStar} 
+                  className={i < 4 ? "text-yellow-400" : "text-gray-300"}
+                />
+              ))}
+              <span class="text-sm text-gray-600 ml-2">4.0/5</span>
+            </div>
+            <p class="text-gray-dark mb-4">
+              Perfect starter detector with excellent discrimination features. Great for parks, beaches, 
+              and backyard hunting. Digital target ID makes learning easy.
+            </p>
+            <div class="space-y-2 mb-6">
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Frequency:</span>
+                <span class="text-sm font-medium">8 kHz</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Weight:</span>
+                <span class="text-sm font-medium">2.8 lbs</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Depth:</span>
+                <span class="text-sm font-medium">8+ inches</span>
+              </div>
+            </div>
+            <div class="text-2xl font-bold text-accent mb-4">$199</div>
+            <a 
+              href="#" 
+              class="w-full bg-accent text-white font-semibold py-3 px-4 rounded-xl hover:bg-accent/90 transition-colors flex items-center justify-center gap-2"
+            >
+              <FontAwesomeIcon icon={faShoppingCart} />
+              View on Amazon
+              <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            </a>
+          </div>
+
+          <!-- Intermediate Detector -->
+          <div class="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-shadow">
+            <div class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full inline-block mb-4">
+              MOST POPULAR
+            </div>
+            <h3 class="text-xl font-bold text-heading mb-2">Nokta Makro Simplex+</h3>
+            <div class="flex items-center gap-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <FontAwesomeIcon 
+                  key={i}
+                  icon={faStar} 
+                  className={i < 5 ? "text-yellow-400" : "text-gray-300"}
+                />
+              ))}
+              <span class="text-sm text-gray-600 ml-2">5.0/5</span>
+            </div>
+            <p class="text-gray-dark mb-4">
+              Incredible value with advanced features. Waterproof, wireless audio capable, 
+              and performs like detectors twice the price. My go-to recommendation.
+            </p>
+            <div class="space-y-2 mb-6">
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Frequency:</span>
+                <span class="text-sm font-medium">12 kHz</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Weight:</span>
+                <span class="text-sm font-medium">2.9 lbs</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Waterproof:</span>
+                <span class="text-sm font-medium">10 feet</span>
+              </div>
+            </div>
+            <div class="text-2xl font-bold text-accent mb-4">$329</div>
+            <a 
+              href="#" 
+              class="w-full bg-accent text-white font-semibold py-3 px-4 rounded-xl hover:bg-accent/90 transition-colors flex items-center justify-center gap-2"
+            >
+              <FontAwesomeIcon icon={faShoppingCart} />
+              View on Amazon
+              <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            </a>
+          </div>
+
+          <!-- Advanced Detector -->
+          <div class="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-shadow">
+            <div class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full inline-block mb-4">
+              PRO CHOICE
+            </div>
+            <h3 class="text-xl font-bold text-heading mb-2">Minelab Equinox 800</h3>
+            <div class="flex items-center gap-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <FontAwesomeIcon 
+                  key={i}
+                  icon={faStar} 
+                  className={i < 5 ? "text-yellow-400" : "text-gray-300"}
+                />
+              ))}
+              <span class="text-sm text-gray-600 ml-2">5.0/5</span>
+            </div>
+            <p class="text-gray-dark mb-4">
+              Multi-frequency powerhouse with advanced target separation. Excels in trashy areas 
+              and challenging conditions. The detector I reach for on serious hunts.
+            </p>
+            <div class="space-y-2 mb-6">
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Frequencies:</span>
+                <span class="text-sm font-medium">Multi + Single</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Weight:</span>
+                <span class="text-sm font-medium">2.8 lbs</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Waterproof:</span>
+                <span class="text-sm font-medium">10 feet</span>
+              </div>
+            </div>
+            <div class="text-2xl font-bold text-accent mb-4">$849</div>
+            <a 
+              href="#" 
+              class="w-full bg-accent text-white font-semibold py-3 px-4 rounded-xl hover:bg-accent/90 transition-colors flex items-center justify-center gap-2"
+            >
+              <FontAwesomeIcon icon={faShoppingCart} />
+              View on Amazon
+              <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Essential Accessories -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-heading mb-8">Essential Accessories</h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Pinpointer -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="font-bold text-heading mb-2">Garrett Pro-Pointer AT</h3>
+            <p class="text-sm text-gray-dark mb-4">Waterproof pinpointer that's saved me countless hours of digging.</p>
+            <div class="text-lg font-bold text-accent mb-3">$139</div>
+            <a href="#" class="text-accent hover:underline text-sm flex items-center gap-1">
+              View Product <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            </a>
+          </div>
+
+          <!-- Headphones -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="font-bold text-heading mb-2">Nokta 2.4GHz Wireless</h3>
+            <p class="text-sm text-gray-dark mb-4">Crystal clear audio without the cable hassle. Game changer!</p>
+            <div class="text-lg font-bold text-accent mb-3">$89</div>
+            <a href="#" class="text-accent hover:underline text-sm flex items-center gap-1">
+              View Product <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            </a>
+          </div>
+
+          <!-- Digging Tool -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="font-bold text-heading mb-2">Lesche T-Handle Digger</h3>
+            <p class="text-sm text-gray-dark mb-4">Sturdy, reliable digging tool that cuts through roots and tough soil.</p>
+            <div class="text-lg font-bold text-accent mb-3">$45</div>
+            <a href="#" class="text-accent hover:underline text-sm flex items-center gap-1">
+              View Product <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            </a>
+          </div>
+
+          <!-- Finds Pouch -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="font-bold text-heading mb-2">DetectorPro Grey Ghost</h3>
+            <p class="text-sm text-gray-dark mb-4">Durable finds pouch with multiple compartments for organized hunting.</p>
+            <div class="text-lg font-bold text-accent mb-3">$35</div>
+            <a href="#" class="text-accent hover:underline text-sm flex items-center gap-1">
+              View Product <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Buying Guide CTA -->
+      <section class="bg-gradient-to-r from-accent/10 to-accent/5 rounded-2xl p-8 text-center">
+        <h2 class="text-2xl font-bold text-heading mb-4">Need Help Choosing?</h2>
+        <p class="text-gray-dark mb-6 max-w-2xl mx-auto">
+          Every hunter's needs are different. If you're unsure which detector or gear is right for your 
+          hunting style and budget, I'm here to help!
+        </p>
+        <a 
+          href="/contact" 
+          class="inline-flex items-center gap-2 bg-accent text-white font-semibold py-3 px-6 rounded-xl hover:bg-accent/90 transition-colors"
+        >
+          Get Personal Recommendations
+          <FontAwesomeIcon icon={faExternalLinkAlt} />
+        </a>
+      </section>
+  </div>
+</BaseLayout>

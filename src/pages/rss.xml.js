@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import { rss } from '@astrojs/rss';
+import rss from '@astrojs/rss';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 export async function GET(context) {
@@ -9,7 +9,7 @@ export async function GET(context) {
         title: post.data.title || 'Beep & Dig Adventure',
         description: post.data.description || 'Join the treasure hunt!',
         pubDate: post.data.pubDate || new Date(),
-        link: `/posts/${post.id.replace(/\.mdx$/, '')}`,
+        link: `/blog/${post.id.replace(/\.mdx$/, '')}`,
         author: post.data.author || 'Diggity Dog',
         categories: post.data.tags || [],
       }))
@@ -17,7 +17,7 @@ export async function GET(context) {
         title: 'Welcome to Beep & Dig',
         description: 'Start your metal detecting journey with Diggity Dog!',
         pubDate: new Date(),
-        link: '/posts/welcome',
+        link: '/blog/welcome',
         author: 'Diggity Dog',
       }];
 

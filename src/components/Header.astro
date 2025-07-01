@@ -1,42 +1,49 @@
 ---
 import NavLink from './NavLink.astro';
-import SocialLink from './SocialLink.jsx';
 import { SITE_TITLE } from '../consts';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShovel, faUsers } from '@fortawesome/pro-solid-svg-icons';
-import { faXTwitter, faGithub } from '@fortawesome/pro-brands-svg-icons';
 ---
 
-<header class="bg-gradient-to-b from-background to-accent/10 shadow-lg py-6 px-6">
-  <nav class="flex items-center justify-between max-w-6xl mx-auto">
+<header class="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-gray-light/20 shadow-sm">
+  <nav class="flex items-center justify-between max-w-6xl mx-auto px-6 py-4">
     <h1 class="text-2xl font-extrabold text-heading tracking-tight">
-      <a href="/" class="flex items-center gap-3 no-underline hover:text-accent-hover">
-        <FontAwesomeIcon icon={faShovel} class="text-accent animate-pulse" size="2x" />
-        {SITE_TITLE}
+      <a href="/" class="flex items-center gap-3 no-underline hover:text-accent-hover transition-all duration-300 hover:scale-105">
+        <span class="text-accent text-3xl drop-shadow-sm">⚒️</span>
+        <span class="bg-gradient-to-r from-heading to-accent bg-clip-text text-transparent">
+          {SITE_TITLE}
+        </span>
       </a>
     </h1>
 
-    <div class="internal-links hidden sm:flex gap-5 text-base items-center">
+    <div class="internal-links hidden lg:flex gap-8 text-base items-center">
       <NavLink href="/">Home</NavLink>
       <NavLink href="/blog">Blog</NavLink>
       <NavLink href="/about">About</NavLink>
       <NavLink href="/contact">Contact</NavLink>
     </div>
 
-    <div class="social-links hidden sm:flex items-center gap-5">
-      <FontAwesomeIcon icon={faUsers} class="text-accent animate-bounce" size="lg" />
-      <SocialLink
+    <div class="social-links hidden md:flex items-center gap-4">
+      <a 
         href="https://x.com/DiggityDogHunt"
-        label="Follow Diggity Dog on X"
-        icon={faXTwitter}
-        client:load
-      />
-      <SocialLink
+        class="text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-accent/10"
+        aria-label="Follow Diggity Dog on X"
+      >
+        🐦
+      </a>
+      <a 
         href="https://github.com/DiggityDog/beepanddig"
-        label="Beep & Dig on GitHub"
-        icon={faGithub}
-        client:load
-      />
+        class="text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-accent/10"
+        aria-label="Beep & Dig on GitHub"
+      >
+        🔗
+      </a>
     </div>
+
+    <!-- Mobile menu button -->
+    <button 
+      class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-light/20 transition-colors"
+      aria-label="Toggle menu"
+    >
+      <span class="text-2xl">☰</span>
+    </button>
   </nav>
 </header>

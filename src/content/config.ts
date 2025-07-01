@@ -5,7 +5,6 @@ const blog = defineCollection({
   loader: glob({
     base: 'src/content/blog',
     pattern: '**/*.{md,mdx}',
-    sort: (a, b) => b.filePath.localeCompare(a.filePath), // Sort by file path for chronological order
   }),
   schema: ({ image }) => z.object({
     title: z.string().min(1, 'A catchy title is required for your treasure-hunting tale!'),

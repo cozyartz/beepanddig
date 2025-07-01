@@ -1,0 +1,23 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="copperGrad" cx="40%" cy="30%" r="60%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#FF8C00;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#CD853F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B4513;stop-opacity:1" />
+    </radialGradient>
+    <filter id="metallic">
+      <feSpecularLighting result="specOut" in="SourceAlpha" specularConstant="2" specularExponent="20" lighting-color="white">
+        <fePointLight x="150" y="100" z="200"/>
+      </feSpecularLighting>
+      <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"/>
+      <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+    </filter>
+  </defs>
+  <rect width="400" height="300" fill="#654321"/>
+  <path d="M120 120 Q180 100 240 130 Q280 160 260 200 Q220 240 170 230 Q130 210 110 170 Q100 140 120 120 Z" fill="url(#copperGrad)" filter="url(#metallic)"/>
+  <path d="M140 140 Q160 135 180 145 Q200 155 190 170 Q170 180 150 175 Q135 165 140 140 Z" fill="#FFD700" opacity="0.7"/>
+  <circle cx="160" cy="150" r="3" fill="#FFF8DC" opacity="0.9"/>
+  <circle cx="180" cy="160" r="2" fill="#FFF8DC" opacity="0.8"/>
+  <text x="200" y="280" text-anchor="middle" fill="#F0F8FF" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Native Copper Nugget</text>
+</svg>

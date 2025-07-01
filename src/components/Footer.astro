@@ -1,37 +1,60 @@
-import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faScroll, faHeart } from '@fortawesome/pro-solid-svg-icons';
-import { faXTwitter, faGithub } from '@fortawesome/pro-brands-svg-icons';
-import SocialLink from './SocialLink.jsx';
+---
+// src/components/Footer.astro
+---
 
-const currentYear = new Date().getFullYear();
-
-export default function Footer() {
-  return (
-    <motion.footer
-      className="w-full py-12 text-center text-sm text-muted bg-gradient-to-b from-transparent to-accent/10 mt-16 shadow-inner"
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-    >
-      <p className="flex justify-center items-center gap-3 text-lg font-medium tracking-tight">
-        <FontAwesomeIcon icon={faScroll} className="text-accent animate-pulse" />
-        © {currentYear} Diggity Dog. All rights reserved.
-      </p>
-
-      <div className="mt-6 flex justify-center gap-6 items-center">
-        <FontAwesomeIcon icon={faHeart} className="text-accent animate-bounce" size="2x" />
-        <SocialLink
-          href="https://x.com/DiggityDogHunt"
-          label="Follow Diggity Dog on X"
-          icon={faXTwitter}
-        />
-        <SocialLink
-          href="https://github.com/DiggityDog/beepanddig"
-          label="Beep & Dig GitHub Repo"
-          icon={faGithub}
-        />
+<footer class="bg-gradient-to-t from-accent/5 to-background border-t border-gray-light/20 mt-auto">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      
+      <!-- Brand -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-center md:justify-start gap-3">
+          <span class="text-accent text-2xl">⚒️</span>
+          <span class="text-xl font-bold text-heading">Beep & Dig</span>
+        </div>
+        <p class="text-gray-dark text-sm leading-relaxed">
+          Discover Michigan's hidden treasures with expert metal detecting tips and premium gear recommendations.
+        </p>
       </div>
-    </motion.footer>
-  );
-}
+
+      <!-- Quick Links -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-semibold text-heading">Quick Links</h3>
+        <div class="flex flex-col space-y-2">
+          <a href="/blog" class="text-gray-dark hover:text-accent transition-colors duration-300">Blog</a>
+          <a href="/gear" class="text-gray-dark hover:text-accent transition-colors duration-300">Gear Reviews</a>
+          <a href="/about" class="text-gray-dark hover:text-accent transition-colors duration-300">About</a>
+          <a href="/contact" class="text-gray-dark hover:text-accent transition-colors duration-300">Contact</a>
+        </div>
+      </div>
+
+      <!-- Social & Connect -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-semibold text-heading">Connect</h3>
+        <div class="flex justify-center md:justify-start gap-4">
+          <a 
+            href="https://x.com/DiggityDogHunt" 
+            class="flex items-center gap-2 text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-lg hover:bg-accent/10"
+            aria-label="Follow on X"
+          >
+            🐦 <span class="text-sm">X</span>
+          </a>
+          <a 
+            href="https://github.com/DiggityDog/beepanddig" 
+            class="flex items-center gap-2 text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-lg hover:bg-accent/10"
+            aria-label="GitHub"
+          >
+            🔗 <span class="text-sm">GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-gray-light/20 pt-8 mt-8 text-center">
+      <p class="text-gray-dark text-sm">
+        © {new Date().getFullYear()} Beep & Dig. Made with 💖 for Michigan treasure hunters.
+      </p>
+    </div>
+  </div>
+</footer>

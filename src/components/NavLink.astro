@@ -1,29 +1,19 @@
 ---
-import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapPin } from '@fortawesome/pro-solid-svg-icons';
 import type { HTMLAttributes } from 'astro/types';
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<'a'> & { href: string };
 
-const { href, class: className = '', ...props } = Astro.props;
+const { href, class: className = '' } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 const baseSegment = pathname.split('/').filter(Boolean)?.[0] || '';
 const isActive = href === pathname || href === '/' + baseSegment;
 ---
 
-<motion.a
+<a
   href={href}
-  class={`relative inline-flex items-center gap-2 px-3 py-1 rounded-xl font-medium transition-colors ${className}`}
-  class:list={[{ 'text-accent font-semibold': isActive }]}
-  whileHover={{ scale: 1.1, rotate: 1 }}
-  whileTap={{ scale: 0.95 }}
-  transition={{ duration: 0.25, ease: 'easeOut' }}
+  class={`relative px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-accent/10 hover:text-accent-hover ${isActive ? 'text-accent bg-accent/10 font-semibold' : 'text-text hover:text-accent'} ${className}`}
   aria-current={isActive ? 'page' : undefined}
-  {...props}
 >
-  {isActive && (
-    <FontAwesomeIcon icon={faMapPin} class="text-accent animate-pulse" size="lg" />
-  )}
+  {isActive && <span class="absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full animate-pulse"></span>}
   <slot />
-</motion.a>
+</a>

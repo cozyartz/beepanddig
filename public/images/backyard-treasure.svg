@@ -1,0 +1,27 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="yard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#90EE90;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#32CD32;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#228B22;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#yard)"/>
+  <g transform="translate(400, 200)">
+    <rect x="-60" y="-10" width="30" height="20" fill="#8B4513" stroke="#654321" stroke-width="2" rx="3"/>
+    <circle cx="40" cy="-20" r="12" fill="#C0C0C0" stroke="#A9A9A9" stroke-width="2"/>
+    <rect x="-10" y="30" width="20" height="15" fill="#FFD700" stroke="#FFA500" stroke-width="2" rx="2"/>
+    <text x="0" y="-120" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2F4F2F">
+      🏡 Backyard Treasure Hunt
+    </text>
+    <text x="0" y="-90" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#556B2F">
+      Hidden Gems in Your Own Yard
+    </text>
+    <text x="0" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#6B8E23">
+      Toy Cars • Lost Jewelry • Vintage Coins
+    </text>
+    <text x="0" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#8FBC8F">
+      "Sometimes the best treasures are right at home"
+    </text>
+  </g>
+</svg>

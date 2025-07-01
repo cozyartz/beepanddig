@@ -1,0 +1,72 @@
+---
+// src/pages/about.astro
+import BaseHead from '../components/BaseHead.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShovel, faTreasureChest } from '@fortawesome/pro-solid-svg-icons';
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <BaseHead 
+      title="About Diggity Dog - Beep & Dig" 
+      description="Meet Diggity Dog, your guide to metal detecting and treasure hunting adventures!"
+    />
+  </Fragment>
+  
+  <div class="max-w-4xl mx-auto -mt-10 pt-10 pb-6">
+      <article class="prose prose-lg max-w-none">
+        <div class="mb-8">
+          <img 
+            src="/images/treasure-hunt-hero.svg"
+            alt="About Diggity Dog"
+            class="w-full h-auto rounded-2xl shadow-xl mb-6"
+          />
+          <h1 class="text-4xl md:text-5xl font-extrabold text-heading mb-4 flex items-center gap-3">
+            <FontAwesomeIcon icon={faShovel} className="text-accent animate-bounce" />
+            Welcome to My World, Fellow Hunters!
+          </h1>
+        </div>
+        
+        <div class="prose prose-lg prose-stone max-w-none">
+          <p class="text-lg mb-6">
+            Hey there! I'm <strong>Diggity Dog</strong>, the passionate treasure-hunting enthusiast behind <strong>Beep & Dig</strong>. My love for metal detecting ignited on the shores of Lake Michigan, where that first exhilarating "beep" revealed a rusty old coin—igniting a lifelong obsession. Now, I'm here to share the thrill of uncovering hidden relics, from glistening lost jewelry to Michigan's legendary copper nuggets, with you.
+          </p>
+
+          <p class="text-lg mb-6">
+            <strong>Beep & Dig</strong> is your ultimate hub for all things metal detecting and treasure hunting. Whether you're a curious newbie wielding your first detector or a seasoned pro chasing the elusive Petoskey stones, I've got your back with expert gear reviews, insider hunting tips, and captivating stories from the field. My mission? To empower you to unearth your own treasures while diving into the rich history buried beneath Michigan's soil.
+          </p>
+
+          <p class="text-lg mb-6">
+            Why Michigan, you ask? This state is a detectorist's dreamscape, boasting pristine beaches, dense forests, and historic mining sites teeming with potential. From the shimmering Lake Superior agates to the relics of forgotten ghost towns, every hunt promises adventure. I'll guide you to the best spots, recommend cutting-edge gear (with a few affiliate links to fuel this journey), and celebrate every "dig" with you. Stay tuned for upcoming posts like "Top 5 Michigan Treasure Spots" or "How to Clean Your Finds Without Ruining Them."
+          </p>
+
+          <!-- Treasure Teaser Section -->
+          <div class="my-8 p-6 bg-gray-light/30 rounded-2xl shadow-lg">
+            <h3 class="text-xl font-semibold text-heading flex items-center gap-3">
+              <FontAwesomeIcon icon={faTreasureChest} className="text-accent animate-pulse" />
+              Tease Your Next Find
+            </h3>
+            <p class="text-gray-dark mt-2 mb-4">
+              Click to get a hint about a hidden Michigan treasure! (Hover for a thrill.)
+            </p>
+            <button 
+              onclick="alert('Hint: Check the shores of Lake Superior for agates!')"
+              class="bg-accent text-white px-5 py-3 rounded-xl flex items-center gap-2 shadow-md hover:shadow-2xl hover:scale-105 transition-all"
+            >
+              <FontAwesomeIcon icon={faShovel} />
+              Dig Deeper
+            </button>
+          </div>
+
+          <p class="text-lg mb-6">
+            When I'm not out detecting, you'll catch me polishing my latest rock find or swapping tales with fellow hunters over a campfire. This isn't just a hobby—it's a lifestyle, and I invite you to join me. Grab your detector, tune into that sweet "beep," and let's unearth history together!
+          </p>
+
+          <p class="text-xl">
+            Got questions or a thrilling find to share? Connect with me on the <a href="/contact" class="text-accent hover:underline">contact page</a> or follow <strong>Beep & Dig</strong> for more treasure-hunting goodness. Happy hunting, and may your next dig be legendary!
+          </p>
+        </div>
+      </article>
+  </div>
+</BaseLayout>

@@ -1,0 +1,27 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C0C0C0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#808080;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#404040;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#F5F3E7"/>
+  <!-- Control box -->
+  <rect x="150" y="50" width="100" height="80" rx="10" fill="url(#metalGrad)" stroke="#333" stroke-width="2"/>
+  <!-- Display screen -->
+  <rect x="165" y="65" width="70" height="30" rx="3" fill="#000" stroke="#333"/>
+  <text x="200" y="82" text-anchor="middle" fill="#00FF00" font-family="monospace" font-size="12">METAL</text>
+  <!-- Buttons -->
+  <circle cx="175" cy="110" r="8" fill="#FF0000"/>
+  <circle cx="200" cy="110" r="8" fill="#00AA00"/>
+  <circle cx="225" cy="110" r="8" fill="#0066CC"/>
+  <!-- Shaft -->
+  <rect x="195" y="130" width="10" height="120" fill="url(#metalGrad)"/>
+  <!-- Search coil -->
+  <ellipse cx="200" cy="260" rx="40" ry="8" fill="url(#metalGrad)" stroke="#333" stroke-width="2"/>
+  <ellipse cx="200" cy="260" rx="30" ry="6" fill="none" stroke="#666" stroke-width="1"/>
+  <!-- Handle -->
+  <rect x="180" y="180" width="40" height="15" rx="7" fill="#654321"/>
+  <text x="200" y="40" text-anchor="middle" fill="#333" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Garrett AT Pro</text>
+</svg>

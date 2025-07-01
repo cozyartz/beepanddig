@@ -2,6 +2,7 @@
 // src/layouts/BaseLayout.astro
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ToastProvider from '../components/ToastProvider.jsx';
 ---
 
 <!DOCTYPE html>
@@ -9,11 +10,14 @@ import Footer from '../components/Footer.astro';
   <head>
     <slot name="head" />
   </head>
-  <body class="bg-background text-foreground font-sans antialiased">
-    <Header />
-    <main class="max-w-6xl mx-auto px-6 pt-10">
-      <slot />
-    </main>
-    <Footer />
+  <body class="bg-background text-text font-sans antialiased min-h-screen">
+    <div class="relative flex min-h-screen flex-col">
+      <Header />
+      <main class="flex-1 max-w-6xl mx-auto px-6 py-10 w-full">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <ToastProvider client:load />
   </body>
 </html>

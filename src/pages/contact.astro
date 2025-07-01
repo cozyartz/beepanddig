@@ -1,0 +1,110 @@
+---
+// src/pages/contact.astro
+import BaseHead from '../components/BaseHead.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.jsx';
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <BaseHead 
+      title="Contact Diggity Dog - Beep & Dig" 
+      description="Get in touch with Diggity Dog! Share your finds, ask questions, or connect with fellow metal detecting enthusiasts." 
+    />
+  </Fragment>
+  
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-heading mb-4 flex items-center justify-center gap-4">
+        <span class="text-accent text-4xl">💬</span>
+        Connect with Diggity Dog
+      </h1>
+      <p class="text-xl text-gray-dark max-w-2xl mx-auto">
+        Got a treasure story to share? Questions about gear? Or just want to chat about your latest finds? 
+        I'd love to hear from fellow hunters!
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-gray-light/20">
+        <h2 class="text-2xl font-bold text-heading mb-6 flex items-center gap-3">
+          <span class="text-accent text-2xl">✉️</span>
+          Send Me a Message
+        </h2>
+        
+        <ContactForm client:load />
+      </div>
+
+      <!-- Community & Info -->
+      <div class="space-y-8">
+        <!-- Community Section -->
+        <div class="bg-gradient-to-br from-accent/5 to-background rounded-2xl p-8 border border-accent/20">
+          <h3 class="text-xl font-bold text-heading mb-4 flex items-center gap-3">
+            <span class="text-accent text-2xl">👥</span>
+            Join the Community
+          </h3>
+          <p class="text-gray-dark mb-6 leading-relaxed">
+            Connect with fellow metal detecting enthusiasts across Michigan and beyond. 
+            Share finds, tips, and stories with our growing community.
+          </p>
+          <div class="space-y-3">
+            <a 
+              href="mailto:diggitydog@beepanddig.com" 
+              class="block bg-white/80 backdrop-blur-sm rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 border border-gray-light/30"
+            >
+              <strong class="text-heading">📧 Email:</strong>
+              <span class="text-gray-dark ml-2">diggitydog@beepanddig.com</span>
+            </a>
+            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-light/30">
+              <strong class="text-heading">⏱️ Response Time:</strong>
+              <span class="text-gray-dark ml-2">Usually within 24-48 hours</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- What to Share -->
+        <div class="bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl p-8 border border-accent/30">
+          <h3 class="text-xl font-bold text-heading mb-4 flex items-center gap-3">
+            <span class="text-accent text-2xl">💎</span>
+            What I'd Love to Hear About
+          </h3>
+          <ul class="space-y-3 text-gray-dark">
+            <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-white/20 transition-colors">
+              <span class="text-accent text-lg">🏆</span>
+              Your most exciting finds and treasure stories
+            </li>
+            <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-white/20 transition-colors">
+              <span class="text-accent text-lg">⚒️</span>
+              Questions about metal detecting gear and techniques
+            </li>
+            <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-white/20 transition-colors">
+              <span class="text-accent text-lg">🗺️</span>
+              Michigan hunting spots and location tips
+            </li>
+            <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-white/20 transition-colors">
+              <span class="text-accent text-lg">🤝</span>
+              Collaboration ideas for content or events
+            </li>
+            <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-white/20 transition-colors">
+              <span class="text-accent text-lg">💭</span>
+              Feedback on the blog and suggestions for topics
+            </li>
+          </ul>
+        </div>
+
+        <!-- Quick Tips -->
+        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-200 rounded-2xl p-6 shadow-lg">
+          <h4 class="font-bold text-yellow-800 mb-3 flex items-center gap-2">
+            <span class="text-2xl">💡</span>
+            Pro Tip
+          </h4>
+          <p class="text-yellow-700 leading-relaxed">
+            When sharing find stories, include photos if possible! I love featuring 
+            community finds in upcoming blog posts (with your permission, of course).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

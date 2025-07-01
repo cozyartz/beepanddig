@@ -23,8 +23,8 @@ const formattedDate = date.toLocaleDateString('en-us', {
   client:load
 >
   <FontAwesomeIcon icon={faClock} className="text-accent animate-pulse" size="lg" />
-  <time datetime={date.toISOString()} className="text-gray-dark text-lg font-medium">
-    <span className="sr-only">Published on {formattedDate}</span>
+  <time datetime={date.toISOString()} class="text-gray-dark text-lg font-medium">
+    <span class="sr-only">Published on {formattedDate}</span>
     {formattedDate}
   </time>
 </motion.div>

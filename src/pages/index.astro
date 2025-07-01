@@ -1,189 +1,137 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import ThemeToggle from '../components/ThemeToggle.jsx';
-import { faShovel, faGem, faTreasureChest, faShoppingCart } from '@fortawesome/pro-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { motion } from 'framer-motion';
-import 'swiper/css';
-
-const { IMAGE_DELIVERY_URL } = import.meta.env;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.jsx';
 
 const rocks = [
   {
     name: 'Petoskey Stone',
     description: 'Fossilized coral found on Michigan beaches, prized for its hexagonal pattern.',
-    image: `${IMAGE_DELIVERY_URL}petoskey-stone-id/default`,
+    image: '/images/petoskey-stone.jpg',
   },
   {
     name: 'Lake Superior Agate',
-    description: 'Colorful, translucent stones from Lake Superior shores, a rockhound’s treasure.',
-    image: `${IMAGE_DELIVERY_URL}agate-id/default`,
+    description: 'Colorful, translucent stones from Lake Superior shores, a rockhound\'s treasure.',
+    image: '/images/agate.jpg',
   },
   {
     name: 'Native Copper Nugget',
-    description: 'Pure copper nuggets from Michigan’s Upper Peninsula, often found while detecting.',
-    image: `${IMAGE_DELIVERY_URL}copper-nugget-id/default`,
+    description: 'Pure copper nuggets from Michigan\'s Upper Peninsula, often found while detecting.',
+    image: '/images/copper-nugget.jpg',
   },
 ];
 
 const products = [
-  { name: 'Garrett AT Pro Metal Detector', link: '/affiliate/garrett-at-pro', image: `${IMAGE_DELIVERY_URL}detector-id/default` },
-  { name: 'Nokta Pinpointer', link: '/affiliate/nokta-pinpointer', image: `${IMAGE_DELIVERY_URL}pinpointer-id/default` },
-  { name: 'Digging Trowel', link: '/affiliate/digging-trowel', image: `${IMAGE_DELIVERY_URL}trowel-id/default` },
+  { name: 'Garrett AT Pro Metal Detector', link: '/gear', image: '/images/detector.jpg' },
+  { name: 'Nokta Pinpointer', link: '/gear', image: '/images/pinpointer.jpg' },
+  { name: 'Premium Digging Trowel', link: '/gear', image: '/images/trowel.jpg' },
 ];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<BaseLayout>
+  <Fragment slot="head">
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <link rel="stylesheet" href="/styles/global.css" />
-  </head>
-  <body class="bg-background text-foreground font-sans antialiased">
-    <Header />
-    <main class="max-w-6xl mx-auto px-6">
-      <ThemeToggle client:load />
+  </Fragment>
 
-      <!-- 🌟 Hero Section -->
-      <motion.section
-        class="py-24 text-center bg-gradient-to-b from-accent/30 via-transparent to-accent/10 rounded-2xl shadow-2xl"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
-        client:load
-      >
-        <motion.div
-          class="inline-block mb-8"
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
-        >
-          <FontAwesomeIcon icon={faShovel} size="4x" class="text-accent glow" />
-        </motion.div>
-        <h1 class="text-6xl font-extrabold text-heading uppercase tracking-wider drop-shadow-lg">Beep & Dig</h1>
-        <p class="text-2xl text-gray-dark mt-6 font-light leading-relaxed max-w-2xl mx-auto">
-          Unearth treasures with the best metal detecting gear and tips
-        </p>
-        <motion.a
-          href="/gear"
-          class="mt-10 inline-block bg-accent text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-3xl transition-all duration-300"
-          whileHover={{ scale: 1.1, rotate: 2 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Shop Gear
-        </motion.a>
-      </motion.section>
+  <!-- Hero Section -->
+  <HeroSection client:load />
 
-      <!-- 🪨 Michigan Rocks -->
-      <section class="py-20" client:load>
-        <h2 class="text-4xl font-semibold text-heading text-center mb-10 flex items-center justify-center gap-4">
-          <FontAwesomeIcon icon={faGem} size="2x" class="text-accent animate-pulse-slow" />
-          Michigan’s Rock Treasures
-        </h2>
-        <Swiper
-          spaceBetween={40}
-          slidesPerView={1}
-          breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
-          class="px-6"
-        >
-          {rocks.map((rock, index) => (
-            <SwiperSlide key={index}>
-              <motion.div
-                class="bg-gray-dark rounded-2xl p-6 shadow-lg relative overflow-hidden"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.3, ease: 'easeOut' }}
-                whileHover={{ scale: 1.08, rotate: 2 }}
-                drag="x"
-                dragConstraints={{ left: -120, right: 120 }}
-              >
-                <img src={rock.image} alt={rock.name} class="w-full h-56 object-cover rounded-xl" />
-                <h3 class="text-2xl text-accent mt-6 flex items-center gap-3 font-medium">
-                  <FontAwesomeIcon icon={faGem} size="lg" />
-                  {rock.name}
-                </h3>
-                <motion.div
-                  class="absolute inset-0 bg-accent/80 p-6 text-white flex items-center justify-center opacity-0 rounded-2xl backdrop-blur"
-                  whileHover={{ opacity: 0.95 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                >
-                  <p class="text-lg text-center">{rock.description}</p>
-                </motion.div>
-              </motion.div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </section>
+  <!-- Michigan Rocks Section -->
+  <section class="py-20">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-heading mb-4 flex items-center justify-center gap-4">
+        <span class="text-accent text-4xl animate-pulse">💎</span>
+        Michigan's Rock Treasures
+      </h2>
+      <p class="text-lg text-gray-dark max-w-2xl mx-auto">
+        Discover the geological wonders waiting to be found in Michigan's diverse landscapes
+      </p>
+    </div>
 
-      <!-- ⚙️ Product Carousel -->
-      <section class="py-20" client:load>
-        <h2 class="text-4xl font-semibold text-heading text-center mb-10 flex items-center justify-center gap-4">
-          <FontAwesomeIcon icon={faTreasureChest} size="2x" class="text-accent animate-bounce" />
-          Top Metal Detecting Gear
-        </h2>
-        <Swiper
-          spaceBetween={40}
-          slidesPerView={1}
-          breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
-          class="px-6"
-        >
-          {products.map((product, index) => (
-            <SwiperSlide key={index}>
-              <motion.div
-                class="bg-gray-dark rounded-2xl p-6 shadow-lg relative overflow-hidden"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.3, ease: 'easeOut' }}
-                whileHover={{ scale: 1.08, rotate: 2 }}
-              >
-                <img src={product.image} alt={product.name} class="w-full h-56 object-cover rounded-xl" />
-                <h3 class="text-2xl text-accent mt-6 flex items-center gap-3 font-medium">
-                  <FontAwesomeIcon icon={faTreasureChest} size="lg" />
-                  {product.name}
-                </h3>
-                <motion.a
-                  href={product.link}
-                  class="text-heading underline hover:text-accent-hover flex items-center gap-3 mt-4 font-semibold"
-                  whileHover={{ scale: 1.1, rotate: 2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <FontAwesomeIcon icon={faShoppingCart} size="lg" />
-                  Buy Now
-                </motion.a>
-              </motion.div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </section>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+      {rocks.map((rock, index) => (
+        <div class="group bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-light/30 hover:border-accent/30 hover:-translate-y-2">
+          <div class="overflow-hidden rounded-xl mb-6">
+            <img 
+              src={rock.image} 
+              alt={rock.name}
+              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+          </div>
+          <h3 class="text-2xl font-semibold text-heading mb-3 flex items-center gap-3">
+            <span class="text-accent">💎</span>
+            {rock.name}
+          </h3>
+          <p class="text-gray-dark leading-relaxed">{rock.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
 
-      <!-- 🗺️ CTA Section -->
-      <motion.section
-        class="py-20 text-center bg-[url('/images/parchment-bg.jpg')] bg-cover bg-center rounded-xl"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.6, ease: 'easeInOut' }}
-        client:load
-      >
-        <h2 class="text-4xl font-semibold text-heading flex items-center justify-center gap-4">
-          <FontAwesomeIcon icon={faTreasureChest} size="2x" class="text-accent animate-pulse" />
-          Hunt for Hidden Treasures
-        </h2>
-        <p class="text-2xl text-gray-dark mt-6 font-light max-w-xl mx-auto">
-          Explore tips, stories, and gear to uncover Michigan’s lost relics.
-        </p>
-        <motion.a
+  <!-- Product Showcase -->
+  <section class="py-20 bg-gradient-to-r from-accent/5 to-background rounded-3xl">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-heading mb-4 flex items-center justify-center gap-4">
+        <span class="text-accent text-4xl animate-bounce">🏆</span>
+        Top Metal Detecting Gear
+      </h2>
+      <p class="text-lg text-gray-dark max-w-2xl mx-auto">
+        Professional-grade equipment trusted by Michigan's most successful treasure hunters
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+      {products.map((product, index) => (
+        <div class="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-light/30 hover:border-accent/50 hover:-translate-y-2">
+          <div class="overflow-hidden rounded-xl mb-6">
+            <img 
+              src={product.image} 
+              alt={product.name}
+              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+          </div>
+          <h3 class="text-xl font-semibold text-heading mb-3 flex items-center gap-3">
+            <span class="text-accent">⚒️</span>
+            {product.name}
+          </h3>
+          <a
+            href={product.link}
+            class="inline-flex items-center gap-2 text-accent hover:text-accent-hover font-semibold transition-colors duration-300 group-hover:scale-105 transform"
+          >
+            <span class="text-lg">🛒</span>
+            View Details
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-20 text-center">
+    <div class="bg-gradient-to-br from-accent/10 via-background to-accent/5 rounded-3xl p-12 border border-accent/20 shadow-xl">
+      <h2 class="text-4xl md:text-5xl font-bold text-heading mb-6 flex items-center justify-center gap-4">
+        <span class="text-accent text-4xl animate-pulse">🗺️</span>
+        Start Your Treasure Hunt
+      </h2>
+      <p class="text-xl text-gray-dark mb-10 max-w-3xl mx-auto leading-relaxed">
+        Join thousands of Michigan detectorists who trust our expertise. Explore in-depth guides, 
+        gear reviews, and local hotspots to maximize your treasure hunting success.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
           href="/blog"
-          class="mt-10 inline-block bg-accent text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-3xl transition-all duration-300"
-          whileHover={{ scale: 1.1, rotate: 2 }}
-          whileTap={{ scale: 0.95 }}
+          class="bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
         >
-          Start Digging
-        </motion.a>
-      </motion.section>
-    </main>
-    <Footer />
-  </body>
-</html>
+          Read Expert Guides 📖
+        </a>
+        <a
+          href="/contact"
+          class="border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+        >
+          Get In Touch ✉️
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,11 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTreasureChest, faCalendarAlt } from '@fortawesome/pro-solid-svg-icons';
+import { getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
-import { render } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -19,67 +15,14 @@ type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
-
-// React Component: Animated Hero Image
-const AnimatedHero = ({ src, alt }) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.8 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 1.2, ease: 'easeOut' }}
-    className="hero-image"
-  >
-    {src ? (
-      <img src={src} alt={alt} className="w-full h-auto rounded-2xl shadow-xl" />
-    ) : (
-      <FontAwesomeIcon icon={faTreasureChest} size="4x" className="text-accent mx-auto animate-pulse" />
-    )}
-  </motion.div>
-);
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={post.data.title} description={post.data.description} />
-    <style>
-      @import url('/styles/global.css');
-    </style>
-  </head>
-  <body>
-    <Header />
-    <main class="max-w-6xl mx-auto px-6">
-      <article>
-        <div class="hero-image">
-          {post.data.heroImage && (
-            <AnimatedHero
-              src={post.data.heroImage.src}
-              alt={`Hero image for ${post.data.title}`}
-              client:load
-            />
-          )}
-        </div>
-        <motion.div
-          className="prose"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3, ease: 'easeInOut' }}
-        >
-          <div class="title">
-            <div className="date text-gray-dark flex items-center gap-3">
-              <FontAwesomeIcon icon={faCalendarAlt} size="lg" className="text-accent" />
-              <FormattedDate date={post.data.pubDate} />
-              {post.data.updatedDate && (
-                <div className="last-updated-on italic">
-                  Last updated on <FormattedDate date={post.data.updatedDate} />
-                </div>
-              )}
-            </div>
-            <h1 className="text-5xl text-heading font-extrabold mt-4">{post.data.title}</h1>
-            <hr className="border-gray-light my-6" />
-          </div>
-          <Content />
-        </motion.div>
-      </article>
-    </main>
-    <Footer />
-  </body>
-</html>
+<BlogPost
+  title={post.data.title}
+  description={post.data.description}
+  pubDate={post.data.pubDate}
+  updatedDate={post.data.updatedDate}
+  heroImage={post.data.heroImage?.src}
+>
+  <Content />
+</BlogPost>
