@@ -1,60 +1,165 @@
 ---
 // src/components/Footer.astro
+import { SITE_TITLE } from '../consts';
 ---
 
-<footer class="bg-gradient-to-t from-accent/5 to-background border-t border-gray-light/20 mt-auto">
-  <div class="max-w-6xl mx-auto px-6 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+<footer class="bg-gradient-to-t from-accent/10 via-accent/5 to-background border-t border-gray-light/20 mt-auto relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-0 left-0 w-full h-full">
+      <svg viewBox="0 0 100 100" class="w-full h-full">
+        <pattern id="footerPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <circle cx="10" cy="10" r="2" fill="currentColor" class="text-accent"/>
+        </pattern>
+        <rect width="100" height="100" fill="url(#footerPattern)"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 py-16 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       
-      <!-- Brand -->
-      <div class="space-y-4">
-        <div class="flex items-center justify-center md:justify-start gap-3">
-          <span class="text-accent text-2xl">⚒️</span>
-          <span class="text-xl font-bold text-heading">Beep & Dig</span>
+      <!-- Brand Section -->
+      <div class="lg:col-span-2 space-y-6">
+        <div class="flex items-center gap-3 group">
+          <div class="relative">
+            <span class="text-accent text-3xl group-hover:animate-bounce transition-all duration-300">⚒️</span>
+            <div class="absolute inset-0 bg-accent/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-2xl font-bold bg-gradient-to-r from-heading to-accent bg-clip-text text-transparent">
+              {SITE_TITLE}
+            </span>
+            <span class="text-sm text-gray-dark font-medium tracking-wide">
+              Michigan Metal Detecting Community
+            </span>
+          </div>
         </div>
-        <p class="text-gray-dark text-sm leading-relaxed">
-          Discover Michigan's hidden treasures with expert metal detecting tips and premium gear recommendations.
+        
+        <p class="text-gray-dark leading-relaxed max-w-md">
+          Discover Michigan's hidden treasures with expert metal detecting tips, comprehensive gear reviews, and insider knowledge from seasoned treasure hunters.
         </p>
+        
+        <div class="flex items-center gap-3 text-sm text-gray-dark">
+          <span class="flex items-center gap-1">
+            <span class="text-accent">📍</span>
+            Battle Creek, Michigan
+          </span>
+          <span class="flex items-center gap-1">
+            <span class="text-accent">📞</span>
+            269.261.0069
+          </span>
+        </div>
       </div>
 
       <!-- Quick Links -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-heading">Quick Links</h3>
-        <div class="flex flex-col space-y-2">
-          <a href="/blog" class="text-gray-dark hover:text-accent transition-colors duration-300">Blog</a>
-          <a href="/gear" class="text-gray-dark hover:text-accent transition-colors duration-300">Gear Reviews</a>
-          <a href="/about" class="text-gray-dark hover:text-accent transition-colors duration-300">About</a>
-          <a href="/contact" class="text-gray-dark hover:text-accent transition-colors duration-300">Contact</a>
+        <h3 class="text-lg font-semibold text-heading mb-4 flex items-center gap-2">
+          <span class="text-accent">🔗</span>
+          Quick Links
+        </h3>
+        <div class="flex flex-col space-y-3">
+          <a href="/blog" class="text-gray-dark hover:text-accent transition-all duration-300 hover:translate-x-1 flex items-center gap-2 group">
+            <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">➤</span>
+            <span>Expert Guides</span>
+          </a>
+          <a href="/gear" class="text-gray-dark hover:text-accent transition-all duration-300 hover:translate-x-1 flex items-center gap-2 group">
+            <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">➤</span>
+            <span>Gear Reviews</span>
+          </a>
+          <a href="/about" class="text-gray-dark hover:text-accent transition-all duration-300 hover:translate-x-1 flex items-center gap-2 group">
+            <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">➤</span>
+            <span>About Us</span>
+          </a>
+          <a href="/contact" class="text-gray-dark hover:text-accent transition-all duration-300 hover:translate-x-1 flex items-center gap-2 group">
+            <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">➤</span>
+            <span>Get In Touch</span>
+          </a>
         </div>
       </div>
 
-      <!-- Social & Connect -->
+      <!-- Resources & Community -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-heading">Connect</h3>
-        <div class="flex justify-center md:justify-start gap-4">
-          <a 
-            href="https://x.com/DiggityDogHunt" 
-            class="flex items-center gap-2 text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-lg hover:bg-accent/10"
-            aria-label="Follow on X"
-          >
-            🐦 <span class="text-sm">X</span>
+        <h3 class="text-lg font-semibold text-heading mb-4 flex items-center gap-2">
+          <span class="text-accent">🎆</span>
+          Community
+        </h3>
+        <div class="flex flex-col space-y-3">
+          <a href="/blog?category=tips" class="text-gray-dark hover:text-accent transition-all duration-300 hover:translate-x-1 flex items-center gap-2 group">
+            <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">➤</span>
+            <span>Pro Tips</span>
           </a>
-          <a 
-            href="https://github.com/DiggityDog/beepanddig" 
-            class="flex items-center gap-2 text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-lg hover:bg-accent/10"
-            aria-label="GitHub"
-          >
-            🔗 <span class="text-sm">GitHub</span>
+          <a href="/blog?category=locations" class="text-gray-dark hover:text-accent transition-all duration-300 hover:translate-x-1 flex items-center gap-2 group">
+            <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">➤</span>
+            <span>Best Locations</span>
+          </a>
+          <a href="/blog?category=finds" class="text-gray-dark hover:text-accent transition-all duration-300 hover:translate-x-1 flex items-center gap-2 group">
+            <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">➤</span>
+            <span>Amazing Finds</span>
+          </a>
+          <a href="/blog?category=beginners" class="text-gray-dark hover:text-accent transition-all duration-300 hover:translate-x-1 flex items-center gap-2 group">
+            <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">➤</span>
+            <span>Beginner's Guide</span>
           </a>
         </div>
       </div>
     </div>
 
+    <!-- Social & Newsletter -->
+    <div class="border-t border-gray-light/20 pt-8 mt-12">
+      <div class="flex flex-col lg:flex-row justify-between items-center gap-6">
+        
+        <!-- Social Links -->
+        <div class="flex items-center gap-2">
+          <span class="text-gray-dark font-medium mr-3">Follow us:</span>
+          <a 
+            href="https://x.com/DiggityDogHunt" 
+            class="group flex items-center gap-2 text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-3 rounded-xl hover:bg-accent/10 hover:shadow-lg"
+            aria-label="Follow on X"
+          >
+            <span class="text-xl group-hover:animate-pulse">🐦</span>
+            <span class="text-sm font-medium">X</span>
+          </a>
+          <a 
+            href="https://github.com/DiggityDog/beepanddig" 
+            class="group flex items-center gap-2 text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-3 rounded-xl hover:bg-accent/10 hover:shadow-lg"
+            aria-label="GitHub"
+          >
+            <span class="text-xl group-hover:animate-pulse">🔗</span>
+            <span class="text-sm font-medium">GitHub</span>
+          </a>
+        </div>
+
+        <!-- Newsletter CTA -->
+        <div class="flex items-center gap-4">
+          <div class="text-center lg:text-right">
+            <p class="text-gray-dark text-sm mb-1">Stay updated with the latest finds!</p>
+            <a 
+              href="/contact" 
+              class="inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-white font-semibold px-4 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm"
+            >
+              <span>📧</span>
+              <span>Join Newsletter</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Copyright -->
-    <div class="border-t border-gray-light/20 pt-8 mt-8 text-center">
-      <p class="text-gray-dark text-sm">
-        © {new Date().getFullYear()} Beep & Dig. Made with 💖 for Michigan treasure hunters.
-      </p>
+    <div class="border-t border-gray-light/20 pt-6 mt-6 text-center">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-dark">
+        <p class="flex items-center gap-1">
+          © {new Date().getFullYear()} {SITE_TITLE}. Made with 
+          <span class="text-accent animate-pulse">💖</span> 
+          for Michigan treasure hunters.
+        </p>
+        <div class="flex items-center gap-4">
+          <a href="/privacy" class="hover:text-accent transition-colors duration-300">Privacy</a>
+          <a href="/terms" class="hover:text-accent transition-colors duration-300">Terms</a>
+          <a href="/sitemap.xml" class="hover:text-accent transition-colors duration-300">Sitemap</a>
+        </div>
+      </div>
     </div>
   </div>
 </footer>

@@ -1,0 +1,75 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { MapPin, Home, Compass } from 'lucide-react';
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <BaseHead 
+      title="404 - Page Not Found | Beep & Dig" 
+      description="Looks like you've wandered off the trail. Let's get you back to treasure hunting!" 
+    />
+  </Fragment>
+  
+  <div class="max-w-4xl mx-auto text-center py-20">
+    <div class="mb-8">
+      <MapPin size={48} className="text-accent" />
+    </div>
+    
+    <h1 class="text-5xl md:text-6xl font-extrabold text-heading mb-4">
+      404 - Lost Treasure
+    </h1>
+    
+    <p class="text-xl text-gray-dark mb-8 max-w-2xl mx-auto">
+      Looks like this page is buried deeper than a Victorian penny! 
+      Don't worry though, we'll help you get back on track.
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a 
+        href="/" 
+        class="bg-accent text-white font-semibold py-3 px-6 rounded-xl hover:bg-accent/90 transition-colors flex items-center gap-2"
+      >
+        <Home size={20} />
+        Return Home
+      </a>
+      
+      <a 
+        href="/blog" 
+        class="bg-gray-dark text-white font-semibold py-3 px-6 rounded-xl hover:bg-gray-800 transition-colors flex items-center gap-2"
+      >
+        <Compass size={20} />
+        Explore Blog
+      </a>
+    </div>
+    
+    <div class="mt-16 p-8 bg-yellow-50 rounded-2xl">
+      <h2 class="text-2xl font-bold text-heading mb-4">
+        Popular Pages You Might Be Looking For:
+      </h2>
+      <ul class="space-y-2 text-left max-w-md mx-auto">
+        <li>
+          <a href="/gear" class="text-accent hover:underline">
+            → Metal Detecting Gear & Equipment
+          </a>
+        </li>
+        <li>
+          <a href="/locations" class="text-accent hover:underline">
+            → Michigan Metal Detecting Locations
+          </a>
+        </li>
+        <li>
+          <a href="/blog" class="text-accent hover:underline">
+            → Treasure Hunting Tips & Stories
+          </a>
+        </li>
+        <li>
+          <a href="/about" class="text-accent hover:underline">
+            → About Diggity Dog
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

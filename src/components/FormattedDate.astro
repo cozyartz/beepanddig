@@ -1,7 +1,6 @@
 ---
 import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/pro-regular-svg-icons';
+import { Clock } from 'lucide-react';
 
 interface Props {
   date: Date;
@@ -22,7 +21,7 @@ const formattedDate = date.toLocaleDateString('en-us', {
   className="flex items-center gap-3"
   client:load
 >
-  <FontAwesomeIcon icon={faClock} className="text-accent animate-pulse" size="lg" />
+  <Clock size={20} className="text-accent animate-pulse" />
   <time datetime={date.toISOString()} class="text-gray-dark text-lg font-medium">
     <span class="sr-only">Published on {formattedDate}</span>
     {formattedDate}

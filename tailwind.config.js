@@ -7,16 +7,16 @@ export default {
         sans: ['Atkinson', 'system-ui', 'sans-serif'],
       },
       colors: {
-        background: 'var(--background)',
-        text: 'var(--text)',
-        heading: 'var(--heading)',
+        background: '#F5F3E7',
+        text: '#2A2F3B',
+        heading: '#1A3C34',
         accent: {
-          DEFAULT: 'var(--accent)',
-          hover: 'var(--accent-hover)',
+          DEFAULT: '#A55E3F',
+          hover: '#D99973',
         },
         gray: {
-          light: 'var(--gray-light)',
-          dark: 'var(--gray-dark)',
+          light: '#DDE2E5',
+          dark: '#3F4B5C',
         },
       },
       animation: {

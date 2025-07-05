@@ -2,8 +2,7 @@
 // src/pages/gear.astro
 import BaseHead from '../components/BaseHead.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } from '@fortawesome/pro-solid-svg-icons';
+import { Wrench, Star, ExternalLink, ShoppingCart, Gem } from 'lucide-react';
 ---
 
 <BaseLayout>
@@ -18,7 +17,7 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
       <!-- Hero Section -->
       <div class="text-center mb-16">
         <h1 class="text-4xl md:text-5xl font-extrabold text-heading mb-4">
-          <FontAwesomeIcon icon={faTools} className="text-accent mr-3" />
+          <Wrench size={32} className="text-accent mr-3" />
           Essential Gear for Every Hunter
         </h1>
         <p class="text-xl text-gray-dark max-w-3xl mx-auto mb-8">
@@ -36,7 +35,7 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
       <!-- Metal Detectors Section -->
       <section class="mb-16">
         <h2 class="text-3xl font-bold text-heading mb-8 flex items-center gap-2">
-          <FontAwesomeIcon icon={faTreasureChest} className="text-accent" />
+          <Gem size={28} className="text-accent" />
           Metal Detectors
         </h2>
         
@@ -49,10 +48,10 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
             <h3 class="text-xl font-bold text-heading mb-2">Garrett ACE 300</h3>
             <div class="flex items-center gap-1 mb-3">
               {[...Array(5)].map((_, i) => (
-                <FontAwesomeIcon 
+                <Star 
                   key={i}
-                  icon={faStar} 
-                  className={i < 4 ? "text-yellow-400" : "text-gray-300"}
+                  size={16}
+                  className={i < 4 ? "text-yellow-400 fill-yellow-400" : "text-gray-300 fill-gray-300"}
                 />
               ))}
               <span class="text-sm text-gray-600 ml-2">4.0/5</span>
@@ -77,12 +76,14 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
             </div>
             <div class="text-2xl font-bold text-accent mb-4">$199</div>
             <a 
-              href="#" 
+              href="https://amzn.to/3GarrettACE300" 
+              target="_blank"
+              rel="noopener noreferrer"
               class="w-full bg-accent text-white font-semibold py-3 px-4 rounded-xl hover:bg-accent/90 transition-colors flex items-center justify-center gap-2"
             >
-              <FontAwesomeIcon icon={faShoppingCart} />
+              <ShoppingCart size={20} />
               View on Amazon
-              <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+              <ExternalLink size={16} />
             </a>
           </div>
 
@@ -94,10 +95,10 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
             <h3 class="text-xl font-bold text-heading mb-2">Nokta Makro Simplex+</h3>
             <div class="flex items-center gap-1 mb-3">
               {[...Array(5)].map((_, i) => (
-                <FontAwesomeIcon 
+                <Star 
                   key={i}
-                  icon={faStar} 
-                  className={i < 5 ? "text-yellow-400" : "text-gray-300"}
+                  size={16}
+                  className={i < 5 ? "text-yellow-400 fill-yellow-400" : "text-gray-300 fill-gray-300"}
                 />
               ))}
               <span class="text-sm text-gray-600 ml-2">5.0/5</span>
@@ -122,12 +123,14 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
             </div>
             <div class="text-2xl font-bold text-accent mb-4">$329</div>
             <a 
-              href="#" 
+              href="https://amzn.to/3NoktaSimplex" 
+              target="_blank"
+              rel="noopener noreferrer"
               class="w-full bg-accent text-white font-semibold py-3 px-4 rounded-xl hover:bg-accent/90 transition-colors flex items-center justify-center gap-2"
             >
-              <FontAwesomeIcon icon={faShoppingCart} />
+              <ShoppingCart size={20} />
               View on Amazon
-              <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+              <ExternalLink size={16} />
             </a>
           </div>
 
@@ -139,10 +142,10 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
             <h3 class="text-xl font-bold text-heading mb-2">Minelab Equinox 800</h3>
             <div class="flex items-center gap-1 mb-3">
               {[...Array(5)].map((_, i) => (
-                <FontAwesomeIcon 
+                <Star 
                   key={i}
-                  icon={faStar} 
-                  className={i < 5 ? "text-yellow-400" : "text-gray-300"}
+                  size={16}
+                  className={i < 5 ? "text-yellow-400 fill-yellow-400" : "text-gray-300 fill-gray-300"}
                 />
               ))}
               <span class="text-sm text-gray-600 ml-2">5.0/5</span>
@@ -167,12 +170,14 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
             </div>
             <div class="text-2xl font-bold text-accent mb-4">$849</div>
             <a 
-              href="#" 
+              href="https://amzn.to/3MinelabEquinox" 
+              target="_blank"
+              rel="noopener noreferrer"
               class="w-full bg-accent text-white font-semibold py-3 px-4 rounded-xl hover:bg-accent/90 transition-colors flex items-center justify-center gap-2"
             >
-              <FontAwesomeIcon icon={faShoppingCart} />
+              <ShoppingCart size={20} />
               View on Amazon
-              <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+              <ExternalLink size={16} />
             </a>
           </div>
         </div>
@@ -188,8 +193,8 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
             <h3 class="font-bold text-heading mb-2">Garrett Pro-Pointer AT</h3>
             <p class="text-sm text-gray-dark mb-4">Waterproof pinpointer that's saved me countless hours of digging.</p>
             <div class="text-lg font-bold text-accent mb-3">$139</div>
-            <a href="#" class="text-accent hover:underline text-sm flex items-center gap-1">
-              View Product <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            <a href="https://amzn.to/3ProPointer" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline text-sm flex items-center gap-1">
+              View Product <ExternalLink size={16} />
             </a>
           </div>
 
@@ -198,8 +203,8 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
             <h3 class="font-bold text-heading mb-2">Nokta 2.4GHz Wireless</h3>
             <p class="text-sm text-gray-dark mb-4">Crystal clear audio without the cable hassle. Game changer!</p>
             <div class="text-lg font-bold text-accent mb-3">$89</div>
-            <a href="#" class="text-accent hover:underline text-sm flex items-center gap-1">
-              View Product <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            <a href="https://amzn.to/3NoktaHeadphones" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline text-sm flex items-center gap-1">
+              View Product <ExternalLink size={16} />
             </a>
           </div>
 
@@ -208,8 +213,8 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
             <h3 class="font-bold text-heading mb-2">Lesche T-Handle Digger</h3>
             <p class="text-sm text-gray-dark mb-4">Sturdy, reliable digging tool that cuts through roots and tough soil.</p>
             <div class="text-lg font-bold text-accent mb-3">$45</div>
-            <a href="#" class="text-accent hover:underline text-sm flex items-center gap-1">
-              View Product <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            <a href="https://amzn.to/3LescheDigger" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline text-sm flex items-center gap-1">
+              View Product <ExternalLink size={16} />
             </a>
           </div>
 
@@ -218,8 +223,8 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
             <h3 class="font-bold text-heading mb-2">DetectorPro Grey Ghost</h3>
             <p class="text-sm text-gray-dark mb-4">Durable finds pouch with multiple compartments for organized hunting.</p>
             <div class="text-lg font-bold text-accent mb-3">$35</div>
-            <a href="#" class="text-accent hover:underline text-sm flex items-center gap-1">
-              View Product <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            <a href="https://amzn.to/3DetectorProPouch" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline text-sm flex items-center gap-1">
+              View Product <ExternalLink size={16} />
             </a>
           </div>
         </div>
@@ -237,7 +242,7 @@ import { faTools, faStar, faExternalLinkAlt, faShoppingCart, faTreasureChest } f
           class="inline-flex items-center gap-2 bg-accent text-white font-semibold py-3 px-6 rounded-xl hover:bg-accent/90 transition-colors"
         >
           Get Personal Recommendations
-          <FontAwesomeIcon icon={faExternalLinkAlt} />
+          <ExternalLink size={20} />
         </a>
       </section>
   </div>

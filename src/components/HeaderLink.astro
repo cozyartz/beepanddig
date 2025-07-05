@@ -1,7 +1,6 @@
 ---
 import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapPin } from '@fortawesome/pro-solid-svg-icons';
+import { MapPin } from 'lucide-react';
 import type { HTMLAttributes } from 'astro/types';
 
 type Props = HTMLAttributes<'a'> & { href: string };
@@ -22,7 +21,7 @@ const isActive = href === pathname || href === '/' + baseSegment;
   aria-current={isActive ? 'page' : undefined}
 >
   <span class="flex items-center gap-2">
-    {isActive && <FontAwesomeIcon icon={faMapPin} className="text-accent animate-pulse" size="lg" />}
+    {isActive && <MapPin size={20} className="text-accent animate-pulse" />}
     <slot />
   </span>
 </motion.a>

@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
+import tailwind from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://beepanddig.com',
@@ -12,16 +12,14 @@ export default defineConfig({
     mdx(),
     sitemap(),
     react(),
-    tailwind(), // <-- Use the official Astro Tailwind integration
   ],
   vite: {
+    plugins: [tailwind()],
     optimizeDeps: {
       include: [
         'framer-motion',
         'swiper',
-        '@fortawesome/react-fontawesome',
-        '@fortawesome/pro-solid-svg-icons',
-        '@fortawesome/pro-regular-svg-icons',
+        'lucide-react',
       ],
     },
     build: {
@@ -30,11 +28,7 @@ export default defineConfig({
           manualChunks: {
             'framer-motion': ['framer-motion'],
             'swiper': ['swiper'],
-            'fontawesome': [
-              '@fortawesome/react-fontawesome',
-              '@fortawesome/pro-solid-svg-icons',
-              '@fortawesome/pro-regular-svg-icons',
-            ],
+            'lucide': ['lucide-react'],
           },
         },
       },

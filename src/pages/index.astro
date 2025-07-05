@@ -38,100 +38,202 @@ const products = [
   <HeroSection client:load />
 
   <!-- Michigan Rocks Section -->
-  <section class="py-20">
-    <div class="text-center mb-16">
+  <section class="py-20 relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-10 w-32 h-32 bg-accent/20 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-20 right-10 w-48 h-48 bg-accent/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    </div>
+    
+    <div class="text-center mb-16 relative z-10">
       <h2 class="text-4xl md:text-5xl font-bold text-heading mb-4 flex items-center justify-center gap-4">
-        <span class="text-accent text-4xl animate-pulse">💎</span>
-        Michigan's Rock Treasures
+        <span class="text-accent text-4xl animate-bounce">💎</span>
+        <span class="bg-gradient-to-r from-heading to-accent bg-clip-text text-transparent">
+          Michigan's Rock Treasures
+        </span>
       </h2>
-      <p class="text-lg text-gray-dark max-w-2xl mx-auto">
+      <p class="text-lg text-gray-dark max-w-2xl mx-auto leading-relaxed">
         Discover the geological wonders waiting to be found in Michigan's diverse landscapes
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 relative z-10">
       {rocks.map((rock, index) => (
-        <div class="group bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-light/30 hover:border-accent/30 hover:-translate-y-2">
-          <div class="overflow-hidden rounded-xl mb-6">
+        <div class="group bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-light/30 hover:border-accent/50 hover:-translate-y-3 hover:rotate-1 relative overflow-hidden">
+          <!-- Card Background Effect -->
+          <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          <div class="overflow-hidden rounded-xl mb-6 relative">
             <img 
               src={rock.image} 
               alt={rock.name}
               class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
             />
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+              <span class="text-white font-semibold text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                Click to Learn More
+              </span>
+            </div>
           </div>
-          <h3 class="text-2xl font-semibold text-heading mb-3 flex items-center gap-3">
-            <span class="text-accent">💎</span>
+          
+          <h3 class="text-2xl font-semibold text-heading mb-3 flex items-center gap-3 relative z-10">
+            <span class="text-accent group-hover:animate-spin">💎</span>
             {rock.name}
           </h3>
-          <p class="text-gray-dark leading-relaxed">{rock.description}</p>
+          <p class="text-gray-dark leading-relaxed relative z-10">{rock.description}</p>
+          
+          <!-- Shimmer Effect -->
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+          </div>
         </div>
       ))}
     </div>
   </section>
 
   <!-- Product Showcase -->
-  <section class="py-20 bg-gradient-to-r from-accent/5 to-background rounded-3xl">
-    <div class="text-center mb-16">
+  <section class="py-20 bg-gradient-to-br from-accent/10 via-accent/5 to-background rounded-3xl border border-accent/20 shadow-2xl relative overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 left-0 w-full h-full">
+        <div class="absolute top-1/4 left-1/4 w-24 h-24 bg-accent/30 rounded-full blur-2xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-32 h-32 bg-accent/20 rounded-full blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
+        <div class="absolute top-3/4 left-3/4 w-20 h-20 bg-accent/40 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
+      </div>
+    </div>
+    
+    <div class="text-center mb-16 relative z-10">
       <h2 class="text-4xl md:text-5xl font-bold text-heading mb-4 flex items-center justify-center gap-4">
         <span class="text-accent text-4xl animate-bounce">🏆</span>
-        Top Metal Detecting Gear
+        <span class="bg-gradient-to-r from-heading to-accent bg-clip-text text-transparent">
+          Top Metal Detecting Gear
+        </span>
       </h2>
-      <p class="text-lg text-gray-dark max-w-2xl mx-auto">
+      <p class="text-lg text-gray-dark max-w-2xl mx-auto leading-relaxed">
         Professional-grade equipment trusted by Michigan's most successful treasure hunters
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 relative z-10">
       {products.map((product, index) => (
-        <div class="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-light/30 hover:border-accent/50 hover:-translate-y-2">
-          <div class="overflow-hidden rounded-xl mb-6">
+        <div class="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-light/30 hover:border-accent/50 hover:-translate-y-3 hover:rotate-1 relative overflow-hidden">
+          <!-- Card Glow Effect -->
+          <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          <div class="overflow-hidden rounded-xl mb-6 relative">
             <img 
               src={product.image} 
               alt={product.name}
               class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
             />
+            <!-- Overlay on hover -->
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+              <div class="text-white font-semibold text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 text-center">
+                <div class="text-2xl mb-2">⚒️</div>
+                <div>Premium Quality</div>
+              </div>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold text-heading mb-3 flex items-center gap-3">
-            <span class="text-accent">⚒️</span>
+          
+          <h3 class="text-xl font-semibold text-heading mb-4 flex items-center gap-3 relative z-10">
+            <span class="text-accent group-hover:animate-spin">⚒️</span>
             {product.name}
           </h3>
+          
           <a
             href={product.link}
-            class="inline-flex items-center gap-2 text-accent hover:text-accent-hover font-semibold transition-colors duration-300 group-hover:scale-105 transform"
+            class="inline-flex items-center gap-2 text-accent hover:text-accent-hover font-semibold transition-all duration-300 group-hover:scale-105 transform bg-accent/10 hover:bg-accent/20 px-4 py-2 rounded-xl relative z-10"
           >
-            <span class="text-lg">🛒</span>
-            View Details
+            <span class="text-lg group-hover:animate-bounce">🛒</span>
+            <span>View Details</span>
+            <span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-2">→</span>
           </a>
+          
+          <!-- Shimmer Effect -->
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+          </div>
         </div>
       ))}
     </div>
   </section>
 
   <!-- Call to Action Section -->
-  <section class="py-20 text-center">
-    <div class="bg-gradient-to-br from-accent/10 via-background to-accent/5 rounded-3xl p-12 border border-accent/20 shadow-xl">
-      <h2 class="text-4xl md:text-5xl font-bold text-heading mb-6 flex items-center justify-center gap-4">
-        <span class="text-accent text-4xl animate-pulse">🗺️</span>
-        Start Your Treasure Hunt
-      </h2>
-      <p class="text-xl text-gray-dark mb-10 max-w-3xl mx-auto leading-relaxed">
-        Join thousands of Michigan detectorists who trust our expertise. Explore in-depth guides, 
-        gear reviews, and local hotspots to maximize your treasure hunting success.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="/blog"
-          class="bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-        >
-          Read Expert Guides 📖
-        </a>
-        <a
-          href="/contact"
-          class="border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-        >
-          Get In Touch ✉️
-        </a>
+  <section class="py-20 text-center relative overflow-hidden">
+    <div class="bg-gradient-to-br from-accent/15 via-background to-accent/5 rounded-3xl p-12 border border-accent/20 shadow-2xl relative overflow-hidden">
+      <!-- Animated Background Pattern -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-0 w-full h-full">
+          <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-accent/30 rounded-full blur-3xl animate-pulse"></div>
+          <div class="absolute bottom-1/4 right-1/4 w-40 h-40 bg-accent/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
+        </div>
+      </div>
+      
+      <div class="relative z-10">
+        <h2 class="text-4xl md:text-5xl font-bold text-heading mb-6 flex items-center justify-center gap-4">
+          <span class="text-accent text-4xl animate-bounce">🗺️</span>
+          <span class="bg-gradient-to-r from-heading to-accent bg-clip-text text-transparent">
+            Start Your Treasure Hunt
+          </span>
+        </h2>
+        <p class="text-xl text-gray-dark mb-10 max-w-3xl mx-auto leading-relaxed">
+          Join thousands of Michigan detectorists who trust our expertise. Explore in-depth guides, 
+          gear reviews, and local hotspots to maximize your treasure hunting success.
+        </p>
+        
+        <!-- Enhanced CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a
+            href="/blog"
+            class="group bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 relative overflow-hidden"
+          >
+            <span class="relative z-10 flex items-center justify-center gap-2">
+              <span class="text-xl group-hover:animate-bounce">📖</span>
+              <span>Read Expert Guides</span>
+            </span>
+            <!-- Button shimmer effect -->
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+            </div>
+          </a>
+          
+          <a
+            href="/contact"
+            class="group border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 relative overflow-hidden"
+          >
+            <span class="relative z-10 flex items-center justify-center gap-2">
+              <span class="text-xl group-hover:animate-bounce">✉️</span>
+              <span>Get In Touch</span>
+            </span>
+            <!-- Button shimmer effect -->
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+            </div>
+          </a>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="flex flex-col items-center p-6 bg-white/30 backdrop-blur-sm rounded-2xl border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:shadow-lg">
+            <div class="text-3xl text-accent mb-2">🏆</div>
+            <div class="text-2xl font-bold text-heading">1000+</div>
+            <div class="text-sm text-gray-dark">Successful Finds</div>
+          </div>
+          
+          <div class="flex flex-col items-center p-6 bg-white/30 backdrop-blur-sm rounded-2xl border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:shadow-lg">
+            <div class="text-3xl text-accent mb-2">👥</div>
+            <div class="text-2xl font-bold text-heading">500+</div>
+            <div class="text-sm text-gray-dark">Active Members</div>
+          </div>
+          
+          <div class="flex flex-col items-center p-6 bg-white/30 backdrop-blur-sm rounded-2xl border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:shadow-lg">
+            <div class="text-3xl text-accent mb-2">📍</div>
+            <div class="text-2xl font-bold text-heading">100+</div>
+            <div class="text-sm text-gray-dark">Prime Locations</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
 </BaseLayout>

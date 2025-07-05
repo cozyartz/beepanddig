@@ -12,7 +12,7 @@ interface Props {
 const { title = SITE_TITLE, description = SITE_DESCRIPTION, image, canonicalUrl } = Astro.props;
 const siteUrl = Astro.site || new URL('http://localhost:4321', import.meta.env.SITE);
 const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl);
-const imageUrl = image ? new URL(image.src, siteUrl) : new URL('/assets/treasure-hunt-placeholder.jpg', siteUrl);
+const imageUrl = image ? new URL(image.src, siteUrl) : new URL('/images/treasure-hunt-hero.svg', siteUrl);
 ---
 
 <!-- Primary Meta Tags -->

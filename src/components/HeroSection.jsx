@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShovel } from '@fortawesome/pro-solid-svg-icons';
+import { Pickaxe } from 'lucide-react';
 
 export default function HeroSection() {
   return (
@@ -24,9 +23,8 @@ export default function HeroSection() {
           ease: 'easeInOut'
         }}
       >
-        <FontAwesomeIcon 
-          icon={faShovel} 
-          size="4x" 
+        <Pickaxe 
+          size={64} 
           className="text-accent drop-shadow-lg" 
         />
       </motion.div>

@@ -1,19 +1,30 @@
 ---
 import NavLink from './NavLink.astro';
 import { SITE_TITLE } from '../consts';
+import MobileMenu from './MobileMenu.jsx';
 ---
 
-<header class="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-gray-light/20 shadow-sm">
+<header class="sticky top-0 z-50 bg-background/95 backdrop-blur-lg border-b border-gray-light/20 shadow-lg">
   <nav class="flex items-center justify-between max-w-6xl mx-auto px-6 py-4">
-    <h1 class="text-2xl font-extrabold text-heading tracking-tight">
-      <a href="/" class="flex items-center gap-3 no-underline hover:text-accent-hover transition-all duration-300 hover:scale-105">
-        <span class="text-accent text-3xl drop-shadow-sm">⚒️</span>
-        <span class="bg-gradient-to-r from-heading to-accent bg-clip-text text-transparent">
-          {SITE_TITLE}
-        </span>
+    <!-- Logo/Brand -->
+    <div class="flex items-center gap-3">
+      <a href="/" class="flex items-center gap-3 no-underline hover:text-accent-hover transition-all duration-300 group">
+        <div class="relative">
+          <span class="text-accent text-4xl drop-shadow-lg group-hover:animate-bounce">⚒️</span>
+          <div class="absolute inset-0 bg-accent/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-2xl font-extrabold bg-gradient-to-r from-heading to-accent bg-clip-text text-transparent tracking-tight">
+            {SITE_TITLE}
+          </span>
+          <span class="text-xs text-gray-dark font-medium tracking-wider uppercase opacity-80">
+            Michigan Metal Detecting
+          </span>
+        </div>
       </a>
-    </h1>
+    </div>
 
+    <!-- Desktop Navigation -->
     <div class="internal-links hidden lg:flex gap-8 text-base items-center">
       <NavLink href="/">Home</NavLink>
       <NavLink href="/blog">Blog</NavLink>
@@ -22,29 +33,33 @@ import { SITE_TITLE } from '../consts';
       <NavLink href="/gear">Gear</NavLink>
     </div>
 
-    <div class="social-links hidden md:flex items-center gap-4">
+    <!-- Social & CTA -->
+    <div class="hidden md:flex items-center gap-4">
+      <div class="social-links flex items-center gap-2">
+        <a 
+          href="https://x.com/DiggityDogHunt"
+          class="text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-accent/10 hover:shadow-lg"
+          aria-label="Follow Diggity Dog on X"
+        >
+          🐦
+        </a>
+        <a 
+          href="https://github.com/DiggityDog/beepanddig"
+          class="text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-accent/10 hover:shadow-lg"
+          aria-label="Beep & Dig on GitHub"
+        >
+          🔗
+        </a>
+      </div>
       <a 
-        href="https://x.com/DiggityDogHunt"
-        class="text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-accent/10"
-        aria-label="Follow Diggity Dog on X"
+        href="/gear" 
+        class="bg-accent hover:bg-accent-hover text-white font-semibold px-4 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm"
       >
-        🐦
-      </a>
-      <a 
-        href="https://github.com/DiggityDog/beepanddig"
-        class="text-gray-dark hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-accent/10"
-        aria-label="Beep & Dig on GitHub"
-      >
-        🔗
+        Shop Gear ⚒️
       </a>
     </div>
 
-    <!-- Mobile menu button -->
-    <button 
-      class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-light/20 transition-colors"
-      aria-label="Toggle menu"
-    >
-      <span class="text-2xl">☰</span>
-    </button>
+    <!-- Mobile Menu Component -->
+    <MobileMenu client:load />
   </nav>
 </header>

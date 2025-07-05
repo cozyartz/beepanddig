@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTreasureChest } from '@fortawesome/pro-solid-svg-icons';
+import { Gem } from 'lucide-react';
 
 const TreasureMapCTA = () => (
   <motion.section className="py-20 text-center bg-[url('/images/parchment-bg.jpg')] bg-cover bg-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.2, delay: 0.6, ease: 'easeInOut' }}>
     <h2 className="text-4xl font-semibold text-heading flex items-center justify-center gap-4">
-      <FontAwesomeIcon icon={faTreasureChest} size="2x" className="text-accent animate-pulse" />
+      <Gem size={32} className="text-accent animate-pulse" />
       Hunt for Hidden Treasures
     </h2>
     <p className="text-2xl text-gray-dark mt-6 font-light">Explore tips, stories, and gear to uncover Michigan’s lost relics.</p>

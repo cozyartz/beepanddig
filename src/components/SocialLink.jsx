@@ -1,5 +1,6 @@
+import React from 'react';
 import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// Note: This component takes icon as a prop, so we don't need to import specific icons here
 
 const SocialLink = ({ href, label, icon }) => (
   <motion.a
@@ -11,7 +12,7 @@ const SocialLink = ({ href, label, icon }) => (
     whileTap={{ scale: 0.9 }}
   >
     <span className="sr-only">{label}</span>
-    <FontAwesomeIcon icon={icon} size="2x" />
+    {icon && React.cloneElement(icon, { size: 32 })}
   </motion.a>
 );
 
